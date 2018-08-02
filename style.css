@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12;
@@ -15,4 +19,30 @@ h3 {
 
 #menu {
     text-align: center;
+}
+
+ul {
+    background-color: lightblue;
+    border-width: 1px;
+    border-color: blue;
+    border-style: solid;
+    padding: 20px;
+    text-align: center;
+    font-size: 0;
+}
+
+li {
+   display: inline-block;
+   color: mediumblue;
+   border-right-color: blue;
+   border-right-width: 1px;
+   border-right-style: dashed;
+   padding: 0px;
+   padding-right: 10px;
+   margin-right: 10px;
+   font-size: 16px;
+}
+
+li:last-child {
+    border: none;
 }
