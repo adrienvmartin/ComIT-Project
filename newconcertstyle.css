@@ -7,7 +7,8 @@ form {
     margin-left: auto;
     margin-right: auto;
     padding: 20px 40px;
-    color: #1abc9c;
+    /* color: #1abc9c; */
+    color: darkslategrey;
 }
 
 h1 {
@@ -33,7 +34,6 @@ input[type="text"], textarea {
     padding: 0.5em;
     font-size: 16px;
     color: gray;
-    outline-color: #1abc9c;
 }
 
 textarea {
@@ -44,7 +44,7 @@ input[type="submit"] {
     display: block;
     padding: 19px 39px 18px 39px;
     color: white;
-    background-color: #1abc9c;
+    background-color: darkslategrey;
     font-size: 18px;
     text-align: center;
     width: 100%;
@@ -67,7 +67,7 @@ input[type="text"]:focus, input[type="password"]:focus, button:focus {
     margin-top: 20px;
     font-size: 16px;
     color: gray;
-    outline-color: #1abc9c;
+    outline-color: darkslategrey;
     align-content: center;
 }
 
@@ -79,7 +79,7 @@ input[type="text"]:focus, input[type="password"]:focus, button:focus {
     display: block;
     padding: 9px 19px 8px 19px;
     color: white;
-    background-color: #1abc9c;
+    background-color: darkslategrey;
     font-size: 18px;
     text-align: center;
     width: 100%;
@@ -91,10 +91,16 @@ input[type="text"]:focus, input[type="password"]:focus, button:focus {
     display: block;
     padding: 9px 19px 8px 19px;
     color: white;
-    background-color: #1abc9c;
+    background-color: darkslategrey;
     font-size: 18px;
     text-align: center;
     width: 100%;
     border: 1px solid #16a085;
     margin-top: 10px;
+}
+
+#fill {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8;
+    
 }

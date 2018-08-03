@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <form>
+    <form id="newheadliner">
         <h1>Add Headliner Show</h1>
         <fieldset>
             <label>Headliner:</label>
@@ -25,41 +25,6 @@
             <label>Date:</label>
             <input type="date" name="date" value="2018-08-02" min="1900-01-01" max="2020-12-31">
         </fieldset>
-        <!-- <fieldset>
-                <div id="bandcontainer"></div>
-                <input type="submit" value="Add Opening Band" id="newband">
-                <script>
-                let newBand = document.getElementById("newband");
-                newBand.onclick = function() {
-                    let newBandForm = document.createElement('form');
-                    let container = document.getElementById('bandcontainer');
-                    container.appendChild(newBandForm);
-                }
-                </script>
-            </fieldset> -->
-
-  <!-- <fieldset>
-            <label>Number of Opening Bands:</label>
-            <input type="text" id="numofbands">
-            <input type="submit" value="Number of Bands" id="numbutton">
-            <div id="bandcontainer"></div>
-            <script>
-                let bandNumber = document.getElementById('numofbands');
-                let bandButton = document.getElementById('numbutton');
-                let container = document.getElementById('bandcontainer');
-
-                bandButton.addEventListener('click', function() {
-                    console.log(bandNumber.value);
-                for (i=0; i < bandNumber.value; i++) {
-                    let bandForm = document.createElement('input');
-                    bandForm.setAttribute('type', 'text');
-                    bandForm.setAttribute('name', 'openingband');
-
-                    container.appendChild(bandForm);
-                }
-            });
-            </script>
-        </fieldset> -->
 
         <fieldset>
             <input type="submit" value="Add opening band" id="submitbutton">
@@ -70,19 +35,21 @@
                 let button = document.getElementById('submitbutton');
                 let resetButton = document.getElementById('resetbutton');
                 let i = 0;
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     event.preventDefault();
                     i++;
                     let newForm = document.createElement('input');
                     newForm.setAttribute('type', 'text');
                     newForm.setAttribute('name', `openingBand${[i]}`);
                     newForm.setAttribute('placeholder', `Opening band ${[i]}`);
+                    newForm.setAttribute('id', `${[i]}`);
                     newForm.classList = null;
                     newForm.classList.add('newBandForm');
                     container.appendChild(newForm);
                     // console.log(newForm.name);
                 });
-                resetButton.addEventListener('click', function() {
+
+                resetButton.addEventListener('click', function () {
                     event.preventDefault();
                     container.removeChild(container.lastChild);
                 })
@@ -90,10 +57,47 @@
         </fieldset>
 
         <fieldset>
-            <input type="submit" value="Create">
-        </fieldset>
+            <input type="submit" value="Create" id="submit">
 
+        </fieldset>
     </form>
+
+    <div id="fill"></div>
+    <script>
+        // let subButton = document.getElementById('submit')
+        let form = document.querySelector('form');
+        let divList = document.getElementById('fill');
+        form.onsubmit = function () {
+            event.preventDefault();
+            let formElements = document.getElementById("newheadliner").elements;
+            let postData = {};
+            for (let i = 0; i < formElements.length; i++) {
+                if (formElements[i].type != "submit")//we dont want to include the submit-buttom
+                    postData[formElements[i].name] = formElements[i].value;
+            }
+            let headliner = postData.headliner;
+            let city = postData.city;
+            let date = postData.date;
+            let venue = postData.venue;
+            let bands = container.id;
+
+            console.log(bands);
+
+            console.log(headliner);
+            console.log(city);
+            console.log(date);
+
+            if (bands == undefined || bands == null) {
+                let concertText = `${headliner} - ${date} @ ${venue}, ${city}`;
+                divList.textContent = concertText;
+            }
+            else {
+                let concertText = `${headliner} w/ ${bands} - ${date} @ ${venue}, ${city}`;
+                divList.textContent = concertText;
+            }
+            
+        }
+    </script>
 </body>
 
 </html>
