@@ -61,7 +61,7 @@
 
         </fieldset>
     </form>
-
+    <br>
     <div id="fill"></div>
     <script>
         // let subButton = document.getElementById('submit')
@@ -79,13 +79,7 @@
             let city = postData.city;
             let date = postData.date;
             let venue = postData.venue;
-            let bands = container.id;
-
-            console.log(bands);
-
-            console.log(headliner);
-            console.log(city);
-            console.log(date);
+            let bands = container.children[0].value;
 
             if (bands == undefined || bands == null) {
                 let concertText = `${headliner} - ${date} @ ${venue}, ${city}`;
@@ -96,6 +90,15 @@
                 divList.textContent = concertText;
             }
             
+        }
+
+
+        function numberToDate(date) {
+            let month;
+            let day;
+            let year;
+
+         
         }
     </script>
 </body>
