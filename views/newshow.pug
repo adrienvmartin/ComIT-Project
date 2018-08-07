@@ -3,13 +3,12 @@ extends ./layout.pug
 block scripts
     script.
 
-
 block content
     body
-        form#newheadliner(action='showfield1', method='get')
+        form#newheadliner(action='concert', method='get')
             fieldset
-                label Number Of Bands:
-                input(type="number", name="numofbands")
+                label Headliner:
+                input(type="text", name="headliner")
             fieldset
                 label City:
                 input(type='text', name='city')
@@ -21,5 +20,34 @@ block content
                 input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
             fieldset
                 input#submit(type='submit', value='Create')
+                
+            input#submitbutton(type='submit', value='Add opening band')
+            #bandcontainer
+            input#resetbutton(type='reset', value='Remove last band')
+
+            script(type='text/javascript').
+                let container = document.getElementById('bandcontainer');
+                let button = document.getElementById('submitbutton');
+                let resetButton = document.getElementById('resetbutton');
+                let i = 0;
+                // Instead of iterating through the counter, let the number of added fields determine the dyanmic number of each field
+                button.addEventListener('click', function () {
+                    event.preventDefault();
+                    i++;
+                    let newForm = document.createElement('input');
+                    newForm.setAttribute('type', 'text');
+                    newForm.setAttribute('name', `openingBand${[i]}`);
+                    newForm.setAttribute('placeholder', `Opening band ${[i]}`);
+                    newForm.setAttribute('id', `${[i]}`);
+                    newForm.classList = null;
+                    newForm.classList.add('newBandForm');
+                    container.appendChild(newForm);
+                });
+
+                resetButton.addEventListener('click', function () {
+                    event.preventDefault();
+                    container.removeChild(container.lastChild);
+                })
+                
   
 block foot

@@ -11,19 +11,19 @@ app.get('/newshow', (req, res) => {
     res.render('newshow', { title: 'Add Concert', message: 'Add New Headliner Show'});
 });
 
-app.get('/showfield1', (req, res) => {
-    const numOfBands = req.query.numofbands;
+app.get('/concert', (req, res) => {
+    const headliner = req.query.headliner;
     const city = req.query.city;
     const venue = req.query.venue;
     const date = req.query.date;
+    // const openers = req.query.newForm;
 
     // After receiving the query from the first page, generate a new page with the appropriate number of fields for each band
 
     // use res.render, with the variables being used for the number of fields
-
-    res.render('newshow2', { fields: numOfBands, title: "Add Concert", message: "Add New Headliner Show", city: `${city}`, venue: `${venue}`, date: `${date}`});
     
-    res.send(`We got the following values from the query string: ${headliner} w/ ${opener}, ${date} at ${venue}, ${city}`);
+    res.send(`We got the following values from the query string: ${headliner}, ${date} at ${venue}, ${city}`);
+    
   });
 
 app.get('/shows', (req, res) => {
@@ -33,7 +33,7 @@ app.get('/shows', (req, res) => {
     const venue = req.query.venue;
     const date = req.query.date;
 
-    res.send(`We got the following values: ${headliner} w/ ${opener}, ${date} at ${venue} in ${city}`);
-})
+
+});
 
 app.listen(3000);
