@@ -1,0 +1,25 @@
+extends ./layout.pug
+
+block scripts
+    script.
+
+
+block content
+    body
+        form#newheadliner(action='showfield1', method='get')
+            fieldset
+                label Number Of Bands:
+                input(type="number", name="numofbands")
+            fieldset
+                label City:
+                input(type='text', name='city')
+            fieldset
+                label Venue:
+                input(type='text', name='venue')
+            fieldset
+                label Date:
+                input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
+            fieldset
+                input#submit(type='submit', value='Create')
+  
+block foot

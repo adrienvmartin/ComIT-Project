@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <form id="newheadliner">
+    <form id="newheadliner" action="/shows" method="get">
         <h1>Add Headliner Show</h1>
         <fieldset>
             <label>Headliner:</label>
@@ -35,6 +35,7 @@
                 let button = document.getElementById('submitbutton');
                 let resetButton = document.getElementById('resetbutton');
                 let i = 0;
+                // Instead of iterating through the counter, let the number of added fields determine the dyanmic number of each field
                 button.addEventListener('click', function () {
                     event.preventDefault();
                     i++;
@@ -46,7 +47,6 @@
                     newForm.classList = null;
                     newForm.classList.add('newBandForm');
                     container.appendChild(newForm);
-                    // console.log(newForm.name);
                 });
 
                 resetButton.addEventListener('click', function () {
@@ -64,7 +64,6 @@
     <br>
     <div id="fill"></div>
     <script>
-        // let subButton = document.getElementById('submit')
         let form = document.querySelector('form');
         let divList = document.getElementById('fill');
 
@@ -73,7 +72,7 @@
             let formElements = document.getElementById("newheadliner").elements;
             let postData = {};
             for (let i = 0; i < formElements.length; i++) {
-                if (formElements[i].type != "submit")//we dont want to include the submit-buttom
+                if (formElements[i].type != "submit")
                     postData[formElements[i].name] = formElements[i].value;
             }
             let headliner = postData.headliner;
@@ -179,6 +178,8 @@
             }
 
             let writtenDate = numberToDate(date);
+
+            // Add counter, then use that counter to dynamically name new divs to add each new concert addition, like with the addition of each new band submission form
 
             if (!headliner) {
                 console.log("You must enter a headliner!");

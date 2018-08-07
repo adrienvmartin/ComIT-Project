@@ -1,0 +1,17 @@
+extends ./layout.pug
+
+block scripts
+    script.
+
+block content
+    body
+        form#newheadliner(action='/shows', method='get')
+            fieldset
+                label Headliner:
+                input(type="text", name="headliner")
+        
+
+            fieldset
+                input#submit(type='submit', value='Create')
+  
+block foot
