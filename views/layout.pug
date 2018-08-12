@@ -150,19 +150,26 @@ block head
         width: 200px;
     }
 
+    /* #openers {
+        width: 400px;
+        height: 200px;
+    } */
+
 
 block scripts
 
-block content
-h1= message
-br
-ul.menu
-    li
-        a(href='newshow') Add Headliner Show
-    li Add Festival
-    li Organize Data
-    li Show Statistics
-
 body
+    block content
+        h1= message
+        br
+        ul.menu
+            li
+                a(href='newshow') Add New
+            li Bands
+            li Venues
+            li Full Listings
+            li Statistics
+
+
 
 block foot

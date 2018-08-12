@@ -4,7 +4,6 @@ block scripts
     script.
 
 block content
-    body
         form#newheadliner(action='concert', method='get')
             fieldset
                 label Headliner:
@@ -19,35 +18,44 @@ block content
                 label Date:
                 input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
             fieldset
+                label Opening Bands:
+                textarea#openers(name='openers', rows='10', placeholder='Enter Opening Band')
+            fieldset
                 input#submit(type='submit', value='Create')
-                
-            input#submitbutton(type='submit', value='Add opening band')
-            #bandcontainer
-            input#resetbutton(type='reset', value='Remove last band')
+                input(type='hidden', name='hiddenbands', id='hiddenbands')
+                input(type='hidden', name='hiddendate', id='hiddendate')
 
-            script(type='text/javascript').
-                let container = document.getElementById('bandcontainer');
-                let button = document.getElementById('submitbutton');
-                let resetButton = document.getElementById('resetbutton');
-                let i = 0;
-                // Instead of iterating through the counter, let the number of added fields determine the dyanmic number of each field
-                button.addEventListener('click', function () {
-                    event.preventDefault();
-                    i++;
-                    let newForm = document.createElement('input');
-                    newForm.setAttribute('type', 'text');
-                    newForm.setAttribute('name', `openingBand${[i]}`);
-                    newForm.setAttribute('placeholder', `Opening band ${[i]}`);
-                    newForm.setAttribute('id', `${[i]}`);
-                    newForm.classList = null;
-                    newForm.classList.add('newBandForm');
-                    container.appendChild(newForm);
-                });
+            script.
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
 
-                resetButton.addEventListener('click', function () {
-                    event.preventDefault();
-                    container.removeChild(container.lastChild);
-                })
-                
-  
+                let form = document.querySelector('form');
+
+                form.onsubmit = function() {
+                        // event.preventDefault();
+
+                        let formElements = document.getElementById("newheadliner").elements;
+                        let postData = {};
+                        let openers = document.getElementById('openers').value.split("\n");
+
+                        for (let i = 0; i < formElements.length; i++) {
+                            if (formElements[i].type != "submit")
+                                postData[formElements[i].name] = formElements[i].value;
+                        }
+
+                        let headliner = postData.headliner;
+                        let city = postData.city;
+                        let date = postData.date;
+                        let venue = postData.venue;
+                        let bands = postData.openers;  
+
+                        console.log("Headliner: " + headliner);
+                        console.log("Openers: " + bands);
+                        console.log("City: " + city);
+                        console.log("Venue: " + venue);
+                        console.log("Date: " + date);
+                        console.log(openers.length);
+
+                    }
+                            
+
 block foot
