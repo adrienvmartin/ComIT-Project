@@ -2,7 +2,8 @@ extends ./layout.pug
 include show-mixin
 
 block scripts
+    script.
 
 block content
     body
-        +show
+        +show(object)

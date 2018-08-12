@@ -1,3 +1,14 @@
+/*
+
+TO DO:
+
+-Separate different opening bands by commas
+-Have the date be shown in written format at some point
+-Have the data organized by date
+
+
+*/
+
 const express = require('express');
 const app = express();
 
@@ -15,9 +26,9 @@ app.get('/', (req, res) => {
         const db = client.db('showtest');
         const collection = db.collection('show1');
 
-        collection.find({}).toArray((error, documents) => {
+        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
-            res.render('layout', { documents: documents });
+            res.render('layout', { documents: documents});
         });
     });
 });
@@ -43,22 +54,24 @@ app.get('/showsubmit', (req, res) => {
 
         res.send(`We got the following values from the query string: ${newshow.headliner} w/ ${newshow.openers} - ${newshow.date} @ ${newshow.venue}, ${newshow.city}`);
 
+        // res.render('mainlisting', { title: "Show Listings", object: headliner });
+
     });
 
 
     // Use this to render the page using the values from the database
-    app.get('/mainlisting', (req, res) => {
-        MongoClient.connect(url, function (err, client) {
+app.get('/mainlisting', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
 
-            const db = client.db('showtest');
-            const collection = db.collection('show1');
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
 
-            const shows = collection.find();
+        const shows = collection.find();
 
-            res.render('mainlisting', { title: "Full Listings", headliner: shows.headliner });
-        });
-
+        res.render('mainlisting', { title: "Full Listings", headliner: shows.headliner });
     });
+
+});
 
     // After receiving the query from the first page, generate a new page with the appropriate number of fields for each band
 

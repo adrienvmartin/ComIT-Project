@@ -39,6 +39,24 @@ block head
         border: none;
     }
 
+    li.show {
+        color: black;
+        border: none;
+        padding: 5px;
+    }
+
+    li.show:hover {
+        background-color: darkgrey;
+    }
+
+    li.show:active {
+        background-color: red;
+    }
+
+    li.show:first-child {
+        font-weight: bold;
+    }
+
     form {
     background-color: #eee;
     border: 1px solid #ddd;
@@ -155,6 +173,11 @@ block head
         height: 200px;
     } */
 
+    .bandlisting {
+        color: black;
+      
+    }
+
 
 block scripts
 
@@ -170,7 +193,10 @@ body
             li 
                 a(href='mainlisting') Full Listings
             li Statistics
-
-
+        br
+        ul.bandlisting
+            each val in documents
+                li.show= Object.values(val)[1] + " w/ " + Object.values(val)[2] + " - " + Object.values(val)[5] + " @ " + Object.values(val)[4] + ", " + Object.values(val)[3]
+                br
 
 block foot
