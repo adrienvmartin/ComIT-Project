@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+    each val in documents
+        -let bands = [];
+        -let headliners = Object.values(val)[1];
+        -let openers = Object.values(val)[2];
+        -bands.push(headliners);
+        -bands.push(openers);
+        each band in bands
+            p #{band}
+        
+        

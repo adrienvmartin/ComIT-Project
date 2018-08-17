@@ -44,10 +44,16 @@ app.get('/showsubmit', (req, res) => {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
+        const bandCollection = db.collection('bands');
 
         // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date };
+
+        const headliners = req.query.headliner;
+        const openers = req.query.openers;
+
+        const bandList = {"headliner": headliners, "openers": openers};
 
         function writtenDate(date) {
 
@@ -140,20 +146,24 @@ app.get('/showsubmit', (req, res) => {
             // callback(result);
         });
 
-        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
-            client.close();
-            res.render('index', { documents: documents});
+        bandCollection.insertOne(bandList, (err, result) => {
+
         });
 
-        // res.send(`We got the following values from the query string: ${newshow.headliner} w/ ${newshow.openers} - ${newshow.date} @ ${newshow.venue}, ${newshow.city}`);
-
-        // res.render('mainlisting', { title: "Show Listings", object: headliner });
+        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
+            client.close();
+            res.render('mainlisting', { documents: documents});
+        });
 
     });
 
+});
+
+
+
 app.get('/date', (req, res) => {
     MongoClient.connect(url, function (err, client) {
-        event.preventDefault();
+        // event.preventDefault();
         const db = client.db('showtest');
         const collection = db.collection('show1');
 
@@ -164,6 +174,8 @@ app.get('/date', (req, res) => {
         });
     });
 });
+
+
 
 app.get('/name', (req, res) => {
     MongoClient.connect(url, function (err, client) {
@@ -187,19 +199,26 @@ app.get('/mainlisting', (req, res) => {
         const db = client.db('showtest');
         const collection = db.collection('show1');
 
-        const shows = collection.find();
-
-        res.render('mainlisting', { title: "Full Listings", headliner: shows.headliner });
+        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
+            client.close();
+            res.render('mainlisting', { documents: documents});
+        });
     });
 
 });
 
-    // After receiving the query from the first page, generate a new page with the appropriate number of fields for each band
+app.get('/bands', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+        const bandCollection = db.collection('bands');
 
-    // use res.render, with the variables being used for the number of fields
-
-
-
+        bandCollection.find({}, {sort: { headliner: 1}}).toArray((error, documents) => {
+            client.close();
+            res.render('bands', {documents: documents});
+        });
+    });
 });
+
 
 app.listen(3000);

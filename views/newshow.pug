@@ -5,7 +5,7 @@ block content
     form#newheadliner(action='showsubmit', method='get')
         fieldset
             label Headliner:
-            input(type="text", name="headliner")
+            input(type="text", name="headliner", id="headliner")
         fieldset
             label City:
             input(type='text', name='city')
@@ -39,6 +39,8 @@ block content
 
                     let formElements = document.getElementById("newheadliner").elements;
                     let postData = {};
+
+                    // Split opener form values into individual items, push them into an array, send that array to the form submission
 
                     for (let i = 0; i < formElements.length; i++) {
                         if (formElements[i].type != "submit") 

@@ -1,9 +1,31 @@
 extends ./layout.pug
-include show-mixin
-
-block scripts
-    script.
 
 block content
-    body
-        +show(object)
+    br
+    ul.settings
+        li
+            a(href='date', method='get') Sort By Date
+        li
+            a(href='name', method='get') Sort By Name
+    br
+    ul.bandlisting
+        each val in documents
+            -let showNumber = documents.indexOf(val) + 1;
+            -let headliner = Object.values(val)[1];
+            -let opener = Object.values(val)[2];
+            -let date = Object.values(val)[5];
+            -let writtenDate = Object.values(val)[6];
+            -let city = Object.values(val)[3];
+            -let venue = Object.values(val)[4];
+
+            -if (opener.length == 0)
+                li.show #{showNumber} - 
+                    b #{headliner} 
+                    |  - #{writtenDate} @ #{venue}, #{city}
+
+            -else
+                li.show #{showNumber} - 
+                    b #{headliner} 
+                    | w/ #{opener} - #{writtenDate} @ #{venue}, #{city}
+            // li.show= documents.indexOf(val) + 1 + " " + #{headliner} + " w/ " + Object.values(val)[2] + " - " + Object.values(val)[5] + " @ " + Object.values(val)[4] + ", " + Object.values(val)[3]
+            br
