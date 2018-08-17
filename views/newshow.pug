@@ -1,62 +1,51 @@
-extends ./layout.pug
-
-block scripts
-    script.
+extends layout.pug
 
 block content
-        form#newheadliner(action='showsubmit', method='get')
-            fieldset
-                label Headliner:
-                input(type="text", name="headliner")
-            fieldset
-                label City:
-                input(type='text', name='city')
-            fieldset
-                label Venue:
-                input(type='text', name='venue')
-            fieldset
-                label Date:
-                input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
-            fieldset
-                label Opening Bands:
-                textarea#openers(name='openers', rows='10', placeholder='Enter Opening Band')
-            fieldset
-                input#submit(type='submit', value='Create')
-                input(type='hidden', name='hiddenbands', id='hiddenbands')
-                input(type='hidden', name='hiddendate', id='hiddendate')
+    br
+    form#newheadliner(action='showsubmit', method='get')
+        fieldset
+            label Headliner:
+            input(type="text", name="headliner")
+        fieldset
+            label City:
+            input(type='text', name='city')
+        fieldset
+            label Venue:
+            input(type='text', name='venue')
+        fieldset
+            label Date:
+            input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
+        // fieldset
+            label Show Type:
+            select(name="typeofshow")
+                option(value='touring') Touring
+                option(value='local') Local
+        fieldset
+            label Opening Bands:
+            textarea#openers(name='openers', rows='10', placeholder='Enter Opening Band')
+        fieldset
+            input#submit(type='submit', value='Create')
+            input(type='hidden', name='hiddenbands', id='hiddenbands')
+            input(type='hidden', name='hiddendate', id='hiddendate')
 
-            script.
-                // disable "enter" key submission
-                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+        script.
+            // disable "enter" key submission
+            window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
 
-                let form = document.querySelector('form');
+            let form = document.querySelector('form');
 
-                form.onsubmit = function() {
-                        // event.preventDefault();
+            form.onsubmit = function() {
+                    // event.preventDefault();
 
-                        let formElements = document.getElementById("newheadliner").elements;
-                        let postData = {};
-                        let openers = document.getElementById('openers').value.split("\n");
+                    let formElements = document.getElementById("newheadliner").elements;
+                    let postData = {};
 
-                        for (let i = 0; i < formElements.length; i++) {
-                            if (formElements[i].type != "submit")
-                                postData[formElements[i].name] = formElements[i].value;
-                        }
-
-                        let headliner = postData.headliner;
-                        let city = postData.city;
-                        let date = postData.date;
-                        let venue = postData.venue;
-                        let bands = postData.openers;  
-
-                        console.log("Headliner: " + headliner);
-                        console.log("Openers: " + bands);
-                        console.log("City: " + city);
-                        console.log("Venue: " + venue);
-                        console.log("Date: " + date);
-                        console.log(openers.length);
-
+                    for (let i = 0; i < formElements.length; i++) {
+                        if (formElements[i].type != "submit") 
+                            postData[formElements[i].name] = formElements[i].value;
                     }
+
+                }
                             
 
 block foot

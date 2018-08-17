@@ -14,6 +14,7 @@ block head
     }
 
     ul {
+        display: block;
         background-color: silver;
         border-width: 1px;
         border-color: blue;
@@ -21,6 +22,9 @@ block head
         padding: 20px;
         text-align: center;
         font-size: 0;
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     li {
@@ -47,14 +51,12 @@ block head
 
     li.show:hover {
         background-color: darkgrey;
+        font-weight: bold;
+        text-decoration: underline;
     }
 
     li.show:active {
         background-color: red;
-    }
-
-    li.show:first-child {
-        font-weight: bold;
     }
 
     form {
@@ -175,28 +177,29 @@ block head
 
     .bandlisting {
         color: black;
+        text-align: left;
       
     }
 
 
 block scripts
+    script.
 
-body
-    block content
-        h1= message
-        br
-        ul.menu
-            li
-                a(href='newshow') Add New
-            li Bands
-            li Venues
-            li 
-                a(href='mainlisting') Full Listings
-            li Statistics
-        br
-        ul.bandlisting
-            each val in documents
-                li.show= Object.values(val)[1] + " w/ " + Object.values(val)[2] + " - " + Object.values(val)[5] + " @ " + Object.values(val)[4] + ", " + Object.values(val)[3]
-                br
+
+block menu
+    br
+    ul.menu
+        li
+            a(href='/') Home
+        li
+            a(href='newshow') Add New
+        li Bands
+        li Venues
+        li 
+            a(href='mainlisting', method='get') Full Listings
+        li Statistics
+
+block content
+
 
 block foot
