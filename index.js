@@ -3,15 +3,12 @@
 TO DO:
 
 -Separate different opening bands by commas
--Have the date be shown in written format at some point
--Have the data organized by date *DONE*
--Figure out the structure - how best to interpret data (i.e. written date, having each year as a headline, having each band, venue, etc be selectable as its own thing and so on)
+-Make separate pages for headliner gigs vs festivals
+-Add sorting option for main listing page
+
+DONE:
+-Have the date be shown in written format at some point *DONE*
 -Add number to each show *DONE*
-
--Split entered cities/venues/bands into their own database in addition to the general database, and then use those database entries to generate individual unique pages that are then linked up to the main listing
-
--NOTE: Make separate function that checks all the venues in the database against each other, makes a collection of all unique names, and passes those into a new database called "venues" - THAT is the database from which the venues pages will be generated. Same thing with bands and cities.
-
 
 */
 
@@ -53,7 +50,7 @@ app.get('/showsubmit', (req, res) => {
         const headliners = req.query.headliner;
         const openers = req.query.openers;
 
-        const bandList = {"headliner": headliners, "openers": openers};
+        let bandList = {"headliner": headliners, "openers": openers};
 
         function writtenDate(date) {
 
@@ -202,6 +199,7 @@ app.get('/mainlisting', (req, res) => {
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
             res.render('mainlisting', { documents: documents});
+            console.log(documents.length);
         });
     });
 
@@ -213,8 +211,24 @@ app.get('/bands', (req, res) => {
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
 
-        bandCollection.find({}, {sort: { headliner: 1}}).toArray((error, documents) => {
+        let bandList = [];
+
+        collection.find({}, {sort: { headliner: 1}}).toArray((error, documents) => {
             client.close();
+            /*
+            let bandList = [];
+            let newBandList = [];
+            for (i=0; i < documents.length; i++) {
+                bandList[i] = documents[i].openers.split(",");
+                let headliner = documents[i].headliner;
+                bandList.push(headliner);
+                bandList.forEach(function (b) {
+                    bandCollection.insertOne({"name": `${b}`});
+                });
+            
+            } */
+            // console.log(bandList);
+            // console.log(`The length of bandList array is: ${bandList.length}`);
             res.render('bands', {documents: documents});
         });
     });
