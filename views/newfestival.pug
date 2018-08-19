@@ -5,7 +5,7 @@ block content
     form#newheadliner(action='festivalsubmit', method='get')
         fieldset
             label Festival Name:
-            input(type="text", name="headliner", id="headliner")
+            input(type="text", name="festival", id="festival")
         fieldset
             label City:
             input(type='text', name='city')
@@ -22,7 +22,7 @@ block content
                 option(value='local') Local
         fieldset
             label List Of Bands:
-            textarea#openers(name='openers', rows='10', placeholder='Enter All Bands')
+            textarea#openers(name='bands', rows='10', placeholder='Enter All Bands')
         fieldset
             input#submit(type='submit', value='Create')
             input(type='hidden', name='hiddenbands', id='hiddenbands')

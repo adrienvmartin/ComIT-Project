@@ -24,7 +24,7 @@ block content
                     b #{headliner} 
                     |  - #{writtenDate} @ #{venue}, #{city}
 
-            -else
+            -else if (opener.length > 0)
                 li.show #{showNumber} - 
                     b #{headliner} 
                     | w/ #{opener} - #{writtenDate} @ #{venue}, #{city}

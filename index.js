@@ -24,6 +24,10 @@ app.get('/newshow', (req, res) => {
     res.render('newshow', { title: 'Concert Database', message: 'Add New Show' });
 });
 
+app.get('/newfestival', (req, res) => {
+    res.render('newfestival', { title: 'Concert Database', message: 'Add New Show' });
+});
+
 app.get('/', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
@@ -160,17 +164,19 @@ app.get('/showsubmit', (req, res) => {
 app.get('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
+        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
+
         const db = client.db('showtest');
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
 
         // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
-        const newshow = { "festival": req.query.headliner, "bands": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date };
+        const newshow = { "festival": req.query.festival, "bands": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date };
 
         const bands = req.query.openers;
 
-        let bandList = {"bands": openers};
+        let bandList = {"bands": bands};
 
         function writtenDate(date) {
 
