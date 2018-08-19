@@ -1,13 +1,21 @@
 extends layout.pug
 
+block scripts
+    script.
+
+
 block content
+    -let bands = [];
     each val in documents
-        -let bands = [];
         -let headliners = Object.values(val)[1];
         -let openers = Object.values(val)[2];
+        -let openerSplit = openers.split(", ");
+        -for (i=0; i < openerSplit.length; i++) {
+            -bands.push(openerSplit[i])
+        -};
         -bands.push(headliners);
-        -bands.push(openers);
-        each band in bands
+
+    -bands.sort();
+        -console.log(bands);
+    each band in bands
             p #{band}
-        
-        

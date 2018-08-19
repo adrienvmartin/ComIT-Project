@@ -1,0 +1,53 @@
+extends layout.pug
+
+block content
+    br
+    form#newheadliner(action='festivalsubmit', method='get')
+        fieldset
+            label Festival Name:
+            input(type="text", name="headliner", id="headliner")
+        fieldset
+            label City:
+            input(type='text', name='city')
+        fieldset
+            label Venue:
+            input(type='text', name='venue')
+        fieldset
+            label Date:
+            input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
+        // fieldset
+            label Show Type:
+            select(name="typeofshow")
+                option(value='touring') Touring
+                option(value='local') Local
+        fieldset
+            label List Of Bands:
+            textarea#openers(name='openers', rows='10', placeholder='Enter All Bands')
+        fieldset
+            input#submit(type='submit', value='Create')
+            input(type='hidden', name='hiddenbands', id='hiddenbands')
+            input(type='hidden', name='hiddendate', id='hiddendate')
+
+        script.
+            // disable "enter" key submission
+            window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+
+            let form = document.querySelector('form');
+
+            form.onsubmit = function() {
+                    // event.preventDefault();
+
+                    let formElements = document.getElementById("newheadliner").elements;
+                    let postData = {};
+
+                    // Split opener form values into individual items, push them into an array, send that array to the form submission
+
+                    for (let i = 0; i < formElements.length; i++) {
+                        if (formElements[i].type != "submit") 
+                            postData[formElements[i].name] = formElements[i].value;
+                    }
+
+                }
+                            
+
+block foot
