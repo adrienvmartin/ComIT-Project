@@ -9,6 +9,7 @@ block content
     each val in documents
         -let headliners = Object.values(val)[1];
         -let openers = Object.values(val)[2];
+        -let showtype = Object.values(val)[3];
         -let openerSplit = openers.split(", ");
         -for (i=0; i < openerSplit.length; i++) {
             -bands.push(openerSplit[i])
