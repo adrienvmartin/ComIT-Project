@@ -3,15 +3,12 @@
 TO DO:
 
 -Separate different opening bands by commas
--Have the date be shown in written format at some point
--Have the data organized by date *DONE*
--Figure out the structure - how best to interpret data (i.e. written date, having each year as a headline, having each band, venue, etc be selectable as its own thing and so on)
+-Make separate pages for headliner gigs vs festivals
+-Add sorting option for main listing page
+
+DONE:
+-Have the date be shown in written format at some point *DONE*
 -Add number to each show *DONE*
-
--Split entered cities/venues/bands into their own database in addition to the general database, and then use those database entries to generate individual unique pages that are then linked up to the main listing
-
--NOTE: Make separate function that checks all the venues in the database against each other, makes a collection of all unique names, and passes those into a new database called "venues" - THAT is the database from which the venues pages will be generated. Same thing with bands and cities.
-
 
 */
 
@@ -21,10 +18,16 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
+const functions = require('./projectfunctions.js');
+
 app.set('view engine', 'pug');
 
 app.get('/newshow', (req, res) => {
     res.render('newshow', { title: 'Concert Database', message: 'Add New Show' });
+});
+
+app.get('/newfestival', (req, res) => {
+    res.render('newfestival', { title: 'Concert Database', message: 'Add New Show' });
 });
 
 app.get('/', (req, res) => {
@@ -48,14 +51,14 @@ app.get('/showsubmit', (req, res) => {
 
         // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
-        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date };
+        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "type": req.query.showtype };
 
         const headliners = req.query.headliner;
         const openers = req.query.openers;
 
-        const bandList = {"headliner": headliners, "openers": openers};
+        let bandList = {"headliner": headliners, "openers": openers};
 
-        function writtenDate(date) {
+        /* function writtenDate(date) {
 
             let string = date.toString();
 
@@ -138,9 +141,46 @@ app.get('/showsubmit', (req, res) => {
             let finalDate = `${writtenMonth} ${writtenDay}, ${year}`;
             return finalDate;
 
-        };
+        }; */
 
-        newshow["writtendate"] = writtenDate(req.query.date);
+        newshow["writtendate"] = functions.writtenDate(req.query.date);
+
+        collection.insertOne(newshow, (err, result) => {
+            // callback(result);
+        });
+
+        bandCollection.insertOne(bandList, (err, result) => {
+
+        });
+
+        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
+            client.close();
+            res.render('mainlisting', { documents: documents});
+        });
+
+    });
+
+});
+
+
+app.get('/festivalsubmit', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+
+        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
+
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+        const bandCollection = db.collection('bands');
+
+        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
+
+        const newshow = { "festival": req.query.festival, "bands": req.query.bands, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "type": req.query.showtype };
+
+        const bands = req.query.bands;
+
+        let bandList = {"bands": bands};
+
+        newshow["writtendate"] = functions.writtenDate(req.query.date);
 
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
@@ -213,8 +253,24 @@ app.get('/bands', (req, res) => {
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
 
-        bandCollection.find({}, {sort: { headliner: 1}}).toArray((error, documents) => {
+        let bandList = [];
+
+        collection.find({}, {sort: { headliner: 1}}).toArray((error, documents) => {
             client.close();
+            /*
+            let bandList = [];
+            let newBandList = [];
+            for (i=0; i < documents.length; i++) {
+                bandList[i] = documents[i].openers.split(",");
+                let headliner = documents[i].headliner;
+                bandList.push(headliner);
+                bandList.forEach(function (b) {
+                    bandCollection.insertOne({"name": `${b}`});
+                });
+            
+            } */
+            // console.log(bandList);
+            // console.log(`The length of bandList array is: ${bandList.length}`);
             res.render('bands', {documents: documents});
         });
     });

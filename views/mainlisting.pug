@@ -12,20 +12,27 @@ block content
         each val in documents
             -let showNumber = documents.indexOf(val) + 1;
             -let headliner = Object.values(val)[1];
-            -let opener = Object.values(val)[2];
+            -let bands = Object.values(val)[2];
             -let date = Object.values(val)[5];
-            -let writtenDate = Object.values(val)[6];
+            -let writtenDate = Object.values(val)[7];
             -let city = Object.values(val)[3];
             -let venue = Object.values(val)[4];
+            -let showtype = Object.values(val)[6];
 
-            -if (opener.length == 0)
+            -console.log(showtype);
+
+            -if (showtype == "headlinergig" && bands.length == 0)
                 li.show #{showNumber} - 
                     b #{headliner} 
                     |  - #{writtenDate} @ #{venue}, #{city}
 
-            -else
+            -else if (showtype == "headlinergig" && bands.length > 0)
                 li.show #{showNumber} - 
                     b #{headliner} 
-                    | w/ #{opener} - #{writtenDate} @ #{venue}, #{city}
+                    | w/ #{bands} - #{writtenDate} @ #{venue}, #{city}
+            -else if (showtype == "festival")
+                li.show #{showNumber} - 
+                    b #{headliner}
+                    |  - #{writtenDate} @ #{venue}, #{city}
             // li.show= documents.indexOf(val) + 1 + " " + #{headliner} + " w/ " + Object.values(val)[2] + " - " + Object.values(val)[5] + " @ " + Object.values(val)[4] + ", " + Object.values(val)[3]
             br
