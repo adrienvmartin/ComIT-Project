@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+    h1 Your Personal Summary
+    br
+    -let bands = [];
+    -let cities = [];
+    -let venues = [];
+    each val in documents
+        -let headliners = Object.values(val)[1];
+        -let openers = Object.values(val)[2];
+        -let openerSplit = openers.split(", ");
+        -for (i=0; i < openerSplit.length; i++) {
+            -bands.push(openerSplit[i]); };
+        -bands.push(headliners);
+        -cities.push(Object.values(val)[3]);
+        -venues.push(Object.values(val)[4]);
+    p You've seen #{bands.length} bands at #{venues.length} venues in #{cities.length} cities.
+    br
+    

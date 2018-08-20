@@ -142,7 +142,6 @@ app.get('/name', (req, res) => {
 })
 
 
-    // Use this to render the page using the values from the database
 app.get('/mainlisting', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
@@ -178,6 +177,18 @@ app.get('/venues', (req, res) => {
         collection.find({}).toArray((error, documents) => {
             client.close();
             res.render('venues', {documents: documents});
+        });
+    });
+});
+
+app.get('/summary', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+
+        collection.find({}).toArray((error, documents) => {
+            client.close();
+            res.render('summary', {documents: documents});
         });
     });
 });
