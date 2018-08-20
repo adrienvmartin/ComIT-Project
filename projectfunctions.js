@@ -83,7 +83,7 @@ const writtenDate = function(date) {
 
 };
 
-const checkForDuplicates = function(item) {
+const duplicateBands = function(item) {
     
 }
 

@@ -6,6 +6,7 @@ block content
     -let bands = [];
     -let cities = [];
     -let venues = [];
+    -let dates = [];
     each val in documents
         -let headliners = Object.values(val)[1];
         -let openers = Object.values(val)[2];
@@ -15,6 +16,12 @@ block content
         -bands.push(headliners);
         -cities.push(Object.values(val)[3]);
         -venues.push(Object.values(val)[4]);
-    p You've seen #{bands.length} bands at #{venues.length} venues in #{cities.length} cities.
+        -dates.push(Object.values(val)[5]);
+    -dates.sort();
+    -let firstDate = dates[0];
+    -let lastDate = dates[dates.length -1];
+    -console.log(firstDate);
+    -console.log(lastDate);
+    p.bands You've seen #{bands.length} bands at #{venues.length} venues in #{cities.length} cities. 
     br
     

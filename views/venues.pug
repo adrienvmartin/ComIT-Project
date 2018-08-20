@@ -1,6 +1,9 @@
 extends layout.pug
 
 block content
-    each val in documents
-        -let venue = Object.values(val)[4];
-        p #{venue}
+    h1 Venue List
+    br
+    div.banddiv
+        each val in documents
+            -let venue = Object.values(val)[4];
+            p.bands #{venue}

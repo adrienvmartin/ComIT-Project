@@ -5,6 +5,7 @@ block scripts
 
 
 block content
+    h1 Band List
     -let bands = [];
     each val in documents
         -let headliners = Object.values(val)[1];
@@ -18,5 +19,6 @@ block content
     -bands.sort();
         -console.log(bands);
         -console.log(bands.length);
-    each band in bands
-            p #{band}
+    div.banddiv
+        each band in bands
+                p.bands #{band}
