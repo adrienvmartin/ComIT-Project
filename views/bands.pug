@@ -16,9 +16,15 @@ block content
         -};
         -bands.push(headliners);
 
-    -bands.sort();
-        -console.log(bands);
-        -console.log(bands.length);
-    div.banddiv
-        each band in bands
-                p.bands #{band}
+        -bands.sort();
+    -var counts = {};
+    -bands.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+    -let bandList = [];
+    -for (i=0; i < Object.entries(counts).length; i++) {
+        -bandList.push(Object.entries(counts)[i]); }
+    -bandList.shift();
+    each band in bandList
+        if band[1] > 1
+            p.bands #{band[0]} (#{band[1]}x)
+        else
+            p.bands #{band[0]}

@@ -4,6 +4,16 @@ block content
     h1 Venue List
     br
     div.banddiv
+        -// For every venue item, iterate through entire array and see if anything matches. If something matches, bump up the counter (default state = 1). At the end of it all, take any venues with a counter greater than 1 and reduce the listed items to just the one, with the counter beside them.
+        -let venues = [];
         each val in documents
             -let venue = Object.values(val)[4];
-            p.bands #{venue}
+            -venues.push(venue);
+        -var counts = {};
+        -venues.sort();
+        -venues.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+        -let venuesList = [];
+        -for (i=0; i < Object.entries(counts).length; i++) {
+            -venuesList.push(Object.entries(counts)[i]); }
+        each venue in venuesList
+            p #{venue[0]} - #{venue[1]}

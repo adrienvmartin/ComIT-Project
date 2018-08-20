@@ -22,6 +22,18 @@ block content
     -let lastDate = dates[dates.length -1];
     -console.log(firstDate);
     -console.log(lastDate);
-    p.bands You've seen #{bands.length} bands at #{venues.length} venues in #{cities.length} cities. 
-    br
+    -let years = function(first, last) {
+        -let year1 = first.slice(0,4);
+        -let year2 = last.slice(0,4);
+        -return (year2 - year1);
+    -};
+    -let numofyears = years(firstDate, lastDate);
+    -console.log(numofyears);
+    -let yearAverage = (documents.length / numofyears);
+    -let bandAverage = (bands.length / numofyears);
+    div.summary
+        p.bands You've seen #{bands.length} bands at #{documents.length} shows, in #{venues.length} venues in #{cities.length} cities over the course of #{numofyears} years. 
+        p.bands This means an average of #{yearAverage.toFixed(1)} shows per year, and an average of #{bandAverage.toFixed(1)} bands per year.
+        // p.bands Average length of time between shows is 
+        br
     

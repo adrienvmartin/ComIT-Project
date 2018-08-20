@@ -87,6 +87,7 @@ const duplicateBands = function(item) {
     
 }
 
+
 /* Console logging the indexes of the list objects 
 -console.log(`The value of index 1 is ${Object.keys(val)[1]}`);
 -console.log(`The value of index 2 is ${Object.keys(val)[2]}`);
