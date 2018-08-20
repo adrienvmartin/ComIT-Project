@@ -181,6 +181,10 @@ block head
       
     }
 
+    .festival {
+        color: darkgreen;
+    }
+
 
 block scripts
     script.
@@ -191,17 +195,18 @@ block menu
     ul.menu
         li
             a(href='/') Home
-        li
-            a(href='newshow') Add New Headliner
-        li
-            a(href='newfestival') Add New Festival
         li 
             a(href='mainlisting') Full Listings
         li 
             a(href='bands') Bands
-        li Venues
+        li 
+            a(href='venues') Venues
 
         li Statistics
+        li
+            a(href='newshow') Add New Headliner
+        li
+            a(href='newfestival') Add New Festival
 
 block content
 

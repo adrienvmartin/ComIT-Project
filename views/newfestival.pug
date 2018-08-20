@@ -7,6 +7,9 @@ block content
             label Festival Name:
             input(type="text", name="festival", id="festival")
         fieldset
+            label Headliner:
+            input(type="text", name="headliner", id="headliner")
+        fieldset
             label City:
             input(type='text', name='city')
         fieldset
@@ -21,8 +24,8 @@ block content
                 option(value='touring') Touring
                 option(value='local') Local
         fieldset
-            label List Of Bands:
-            textarea#openers(name='bands', rows='10', placeholder='Enter All Bands')
+            label Other Bands:
+            textarea#openers(name='openers', rows='10', placeholder='Enter All Bands')
         fieldset
             input#submit(type='submit', value='Create')
             input(type='hidden', name='showtype', id='showtype', value='festival')

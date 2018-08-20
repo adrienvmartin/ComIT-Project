@@ -12,27 +12,28 @@ block content
         each val in documents
             -let showNumber = documents.indexOf(val) + 1;
             -let headliner = Object.values(val)[1];
-            -let bands = Object.values(val)[2];
-            -let date = Object.values(val)[5];
-            -let writtenDate = Object.values(val)[7];
+            -let openers = Object.values(val)[2];
             -let city = Object.values(val)[3];
             -let venue = Object.values(val)[4];
-            -let showtype = Object.values(val)[6];
+            -let date = Object.values(val)[5];
+            -let writtenDate = Object.values(val)[6];
+            -let showType = Object.values(val)[7];
+            -let festivalName = Object.values(val)[8];
 
-            -console.log(showtype);
+            -let splitOpeners = openers.split(", ");
+            -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
 
-            -if (showtype == "headlinergig" && bands.length == 0)
+            -if (showType == "headlinergig" && openers.length == 0)
                 li.show #{showNumber} - 
                     b #{headliner} 
                     |  - #{writtenDate} @ #{venue}, #{city}
 
-            -else if (showtype == "headlinergig" && bands.length > 0)
+            -else if (showType == "headlinergig" && openers.length > 0)
                 li.show #{showNumber} - 
                     b #{headliner} 
-                    | w/ #{bands} - #{writtenDate} @ #{venue}, #{city}
-            -else if (showtype == "festival")
+                    | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
+            -else if (showType == "festival")
                 li.show #{showNumber} - 
-                    b #{headliner}
-                    |  - #{writtenDate} @ #{venue}, #{city}
-            // li.show= documents.indexOf(val) + 1 + " " + #{headliner} + " w/ " + Object.values(val)[2] + " - " + Object.values(val)[5] + " @ " + Object.values(val)[4] + ", " + Object.values(val)[3]
+                    b.festival #{festivalName}
+                    |  - #{headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
             br
