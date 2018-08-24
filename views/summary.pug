@@ -17,6 +17,25 @@ block content
         -cities.push(Object.values(val)[3]);
         -venues.push(Object.values(val)[4]);
         -dates.push(Object.values(val)[5]);
+    // Sorting the venues to remove duplicates to get an accurate number count
+    -let venueCounts = {};
+    -venues.sort();
+    -venues.forEach(function(x) { venueCounts[x] = (venueCounts[x] || 0)+1; });
+    -let venuesList = [];
+    -for (i=0; i < Object.entries(venueCounts).length; i++) {
+        -venuesList.push(Object.entries(venueCounts)[i]); }
+
+    // Sorting the cities for accurate count
+    -var cityCounts = {};
+    -cities.forEach(function(x) { cityCounts[x] = (cityCounts[x] || 0)+1; });
+    -let cityList = [];
+    -for (i=0; i < Object.entries(cityCounts).length; i++) {
+        -cityList.push(Object.entries(cityCounts)[i]); }
+
+
+    -console.log(bands);
+
+    // Getting the years
     -dates.sort();
     -let firstDate = dates[0];
     -let lastDate = dates[dates.length -1];
@@ -32,8 +51,6 @@ block content
     -let yearAverage = (documents.length / numofyears);
     -let bandAverage = (bands.length / numofyears);
     div.summary
-        p.bands You've seen #{bands.length} bands at #{documents.length} shows, in #{venues.length} venues in #{cities.length} cities over the course of #{numofyears} years. 
+        p.bands You've seen #{bands.length} bands at #{documents.length} shows, in #{venuesList.length} venues in #{cityList.length} cities over the course of #{numofyears} years. 
         p.bands This means an average of #{yearAverage.toFixed(1)} shows per year, and an average of #{bandAverage.toFixed(1)} bands per year.
-        // p.bands Average length of time between shows is 
         br
-    

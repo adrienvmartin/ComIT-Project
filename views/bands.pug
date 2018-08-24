@@ -24,7 +24,8 @@ block content
         -bandList.push(Object.entries(counts)[i]); }
     -bandList.shift();
     each band in bandList
-        if band[1] > 1
-            p.bands #{band[0]} (#{band[1]}x)
-        else
-            p.bands #{band[0]}
+        if band[0].charAt(0) != "["
+            if band[1] > 1
+                p.bands #{band[0]} (#{band[1]}x)
+            else
+                p.bands #{band[0]}

@@ -3,13 +3,8 @@ extends ./layout.pug
 block content
     h1 Main Listing
     br
-    ul.settings
-        li
-            a(href='date', method='get') Sort By Date
-        li
-            a(href='name', method='get') Sort By Name
-    br
     ul.bandlisting
+        -let yearArray = [];
         each val in documents
             -let showNumber = documents.indexOf(val) + 1;
             -let headliner = Object.values(val)[1];
@@ -20,21 +15,23 @@ block content
             -let writtenDate = Object.values(val)[6];
             -let showType = Object.values(val)[7];
             -let festivalName = Object.values(val)[8];
+            -let year = Object.values(val)[5].slice(0, 4);
 
             -let splitOpeners = openers.split(", ");
             -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
 
             -if (showType == "headlinergig" && openers.length == 0)
+                b #{year}
                 li.show #{showNumber} - 
-                    b #{headliner} 
+                    b #{val.headliner} 
                     |  - #{writtenDate} @ #{venue}, #{city}
 
             -else if (showType == "headlinergig" && openers.length > 0)
                 li.show #{showNumber} - 
-                    b #{headliner} 
+                    b #{val.headliner} 
                     | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
             -else if (showType == "festival")
                 li.show #{showNumber} - 
                     b.festival #{festivalName}
-                    |  - #{headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
+                    |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
             br

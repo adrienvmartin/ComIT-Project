@@ -4,7 +4,6 @@ block content
     h1 Venue List
     br
     div.banddiv
-        -// For every venue item, iterate through entire array and see if anything matches. If something matches, bump up the counter (default state = 1). At the end of it all, take any venues with a counter greater than 1 and reduce the listed items to just the one, with the counter beside them.
         -let venues = [];
         each val in documents
             -let venue = Object.values(val)[4];

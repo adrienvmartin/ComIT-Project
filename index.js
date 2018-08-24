@@ -4,11 +4,16 @@ TO DO:
 -Add sorting option for main listing page
 -Add function that checks for duplicates for venues/bands/cities and then adds up the totals
 
+-Add Unit Tests***
+
 DONE:
 --Make separate pages for headliner gigs vs festivals
 -Separate different opening bands by commas *DONE*
 -Have the date be shown in written format at some point *DONE*
 -Add number to each show *DONE*
+
+POSSIBLE:
+-Use the functions from the bands and venues pages in Node Express to generate that data straight into MongoDB
 
 */
 
@@ -34,6 +39,9 @@ app.get('/', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
         const collection = db.collection('show1');
+
+        useNewUrlParser: true;
+
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
@@ -74,6 +82,26 @@ app.get('/showsubmit', (req, res) => {
 });
 
 
+app.get('/sortyears', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+        const bandCollection = db.collection('bands');
+
+        collection.find({}).toArray((error, documents) => {
+            documents.forEach(function (c) {
+                let id = c._id;
+                let displayYear = c.date.slice(0,4);
+                collection.updateOne({"_id": id}, { $set: {"year": displayYear}});
+            });
+    });
+    });     
+
+
+});
+
+
 app.get('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
@@ -91,6 +119,38 @@ app.get('/festivalsubmit', (req, res) => {
         const openers = req.query.openers;
 
         let bandList = {"headliner": headliners, "openers": openers};
+
+        collection.insertOne(newshow, (err, result) => {
+            // callback(result);
+        });
+
+        bandCollection.insertOne(bandList, (err, result) => {
+
+        });
+
+        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
+            client.close();
+            res.render('mainlisting', { documents: documents});
+        });
+
+    });
+
+});
+
+app.get('/localsubmit', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+
+        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
+
+        const db = client.db('showtest');
+        const collection = db.collection('localshows');
+        const bandCollection = db.collection('bands');
+
+        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
+
+        const newshow = { "bands": req.query.bands, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
+
+        let bandList = { "bands": req.query.bands };
 
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
