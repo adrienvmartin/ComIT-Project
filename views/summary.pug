@@ -8,15 +8,15 @@ block content
     -let venues = [];
     -let dates = [];
     each val in documents
-        -let headliners = Object.values(val)[1];
-        -let openers = Object.values(val)[2];
+        -let headliners = val.headliner;
+        -let openers = val.openers;
         -let openerSplit = openers.split(", ");
         -for (i=0; i < openerSplit.length; i++) {
             -bands.push(openerSplit[i]); };
         -bands.push(headliners);
-        -cities.push(Object.values(val)[3]);
-        -venues.push(Object.values(val)[4]);
-        -dates.push(Object.values(val)[5]);
+        -cities.push(val.city);
+        -venues.push(val.venue);
+        -dates.push(val.date);
     // Sorting the venues to remove duplicates to get an accurate number count
     -let venueCounts = {};
     -venues.sort();

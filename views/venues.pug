@@ -6,7 +6,7 @@ block content
     div.banddiv
         -let venues = [];
         each val in documents
-            -let venue = Object.values(val)[4];
+            -let venue = val.venue;
             -venues.push(venue);
         -var counts = {};
         -venues.sort();
