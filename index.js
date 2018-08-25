@@ -93,7 +93,7 @@ app.get('/sortyears', (req, res) => {
             documents.forEach(function (c) {
                 let id = c._id;
                 let displayYear = c.date.slice(0,4);
-                collection.updateOne({"_id": id}, { $set: {"year": displayYear}});
+                // collection.updateOne({"_id": id}, { $set: {"year": displayYear}});
             });
     });
     });     
