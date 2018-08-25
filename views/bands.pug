@@ -8,8 +8,8 @@ block content
     h1 Band List
     -let bands = [];
     each val in documents
-        -let headliners = Object.values(val)[1];
-        -let openers = Object.values(val)[2];
+        -let headliners = val.headliner;
+        -let openers = val.openers;
         -let openerSplit = openers.split(", ");
         -for (i=0; i < openerSplit.length; i++) {
             -bands.push(openerSplit[i])

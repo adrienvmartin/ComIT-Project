@@ -7,15 +7,15 @@ block content
         -let yearArray = [];
         each val in documents
             -let showNumber = documents.indexOf(val) + 1;
-            -let headliner = Object.values(val)[1];
-            -let openers = Object.values(val)[2];
-            -let city = Object.values(val)[3];
-            -let venue = Object.values(val)[4];
-            -let date = Object.values(val)[5];
-            -let writtenDate = Object.values(val)[6];
-            -let showType = Object.values(val)[7];
-            -let festivalName = Object.values(val)[8];
-            -let year = Object.values(val)[5].slice(0, 4);
+            -let headliner = val.headliner;
+            -let openers = val.openers;
+            -let city = val.city;
+            -let venue = val.venue;
+            -let date = val.date;
+            -let writtenDate = val.writtendate;
+            -let showType = val.showtype;
+            -let festivalName = val.festival;
+            -let year = val.date.slice(0, 4);
 
             -let splitOpeners = openers.split(", ");
             -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
