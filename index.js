@@ -50,6 +50,8 @@ app.get('/', (req, res) => {
     });
 });
 
+// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page?
+
 app.get('/showsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
@@ -59,7 +61,9 @@ app.get('/showsubmit', (req, res) => {
 
         // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
-        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
+        const showid = `${req.query.headliner}+${req.query.date}+${req.query.city}`;
+
+        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "showid": showid };
 
         const headliners = req.query.headliner;
         const openers = req.query.openers;
@@ -252,8 +256,5 @@ app.get('/summary', (req, res) => {
         });
     });
 });
-
-// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page?
-
 
 app.listen(3000);
