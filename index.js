@@ -61,7 +61,7 @@ app.get('/showsubmit', (req, res) => {
 
         // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
-        const showid = `${req.query.headliner}+${req.query.date}+${req.query.city}`;
+        const showid = `event${Math.random().toString(16).substring(2, 8) + Math.random().toString(16).substring(2, 8)}`;
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "showid": showid };
 
@@ -78,7 +78,7 @@ app.get('/showsubmit', (req, res) => {
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
-            res.render('mainlisting', { documents: documents});
+            res.render(`/shows/${showid}`, { documents: documents});
         });
 
     });
