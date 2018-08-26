@@ -71,10 +71,10 @@ app.get('/showsubmit', (req, res) => {
 
         let bandList = {"headliner": headliners, "openers": openers};
 
-        collection.insertOne(newshow, (err, result) => {
+        bandCollection.insertOne(bandList, (err, result) => {
         });
 
-        bandCollection.insertOne(bandList, (err, result) => {
+        collection.insertOne(newshow, (err, result) => {
         });
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
@@ -85,6 +85,8 @@ app.get('/showsubmit', (req, res) => {
     });
 
 });
+
+
 
 
 app.get('/sortyears', (req, res) => {
@@ -254,6 +256,18 @@ app.get('/summary', (req, res) => {
         collection.find({}).toArray((error, documents) => {
             client.close();
             res.render('summary', {documents: documents});
+        });
+    });
+});
+
+app.get(`/event`, (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+
+        collection.find({}).toArray((error, documents) => {
+            client.close();
+            res.render('event', {documents: documents});
         });
     });
 });

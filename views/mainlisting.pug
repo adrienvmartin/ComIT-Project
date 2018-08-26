@@ -16,6 +16,8 @@ block content
             -let showType = val.showtype;
             -let festivalName = val.festival;
             -let year = val.date.slice(0, 4);
+            -let showid = val.showid;
+            -console.log(year);
 
             -let splitOpeners = openers.split(", ");
             -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
@@ -23,15 +25,18 @@ block content
             -if (showType == "headlinergig" && openers.length == 0)
                 b #{year}
                 li.show #{showNumber} - 
-                    b #{val.headliner} 
-                    |  - #{writtenDate} @ #{venue}, #{city}
+                    a(href='event').showlist
+                        b #{val.headliner} 
+                        |  - #{writtenDate} @ #{venue}, #{city}
 
             -else if (showType == "headlinergig" && openers.length > 0)
                 li.show #{showNumber} - 
-                    b #{val.headliner} 
-                    | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
+                    a(href='event').showlist
+                        b #{val.headliner} 
+                        | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
             -else if (showType == "festival")
                 li.show #{showNumber} - 
-                    b.festival #{festivalName}
-                    |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
+                    a(href='event')
+                        b.festival #{festivalName}
+                        |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
             br

@@ -1,14 +1,16 @@
 extends layout.pug
 
 block content
-    -let headliner = documents.headliner;
-    -let openers = documents.openers;
-    -let city = documents.city;
-    -let venue = documents.venue;
-    -let date = documents.date;
-    -let writtenDate = documents.writtendate;
-    -let showType = documents.showtype;
-    -let festivalName = documents.festival;
-    -let year = documents.date.slice(0, 4);
-    h1 #{headliner}
-    h3 #{openers} - #{writtenDate} at #{venue} in #{city}
+    each val in documents
+        -let headliner = val.headliner;
+        -let openers = val.openers;
+        -let city = val.city;
+        -let venue = val.venue;
+        -let date = val.date;
+        -let writtenDate = val.writtendate;
+        -let showType = val.showtype;
+        -let festivalName = val.festival;
+            h1 #{headliner}
+            h3 #{openers} - #{writtenDate} at #{venue} in #{city}
+    -console.log(headliner);
+    -console.log(openers);
