@@ -1,0 +1,14 @@
+extends layout.pug
+
+block content
+    -let headliner = documents.headliner;
+    -let openers = documents.openers;
+    -let city = documents.city;
+    -let venue = documents.venue;
+    -let date = documents.date;
+    -let writtenDate = documents.writtendate;
+    -let showType = documents.showtype;
+    -let festivalName = documents.festival;
+    -let year = documents.date.slice(0, 4);
+    h1 #{headliner}
+    h3 #{openers} - #{writtenDate} at #{venue} in #{city}

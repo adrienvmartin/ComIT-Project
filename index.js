@@ -2,15 +2,16 @@
 
 TO DO:
 -Add sorting option for main listing page
--Add function that checks for duplicates for venues/bands/cities and then adds up the totals
-
 -Add Unit Tests***
+-Add delete/update options for show listing
 
 DONE:
 --Make separate pages for headliner gigs vs festivals
 -Separate different opening bands by commas *DONE*
 -Have the date be shown in written format at some point *DONE*
 -Add number to each show *DONE*
+-Add function that checks for duplicates for venues/bands/cities and then adds up the totals *DONE*
+
 
 POSSIBLE:
 -Use the functions from the bands and venues pages in Node Express to generate that data straight into MongoDB
@@ -50,7 +51,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page?
+// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page? Perhaps: have one page for shows that dynamically enters the content, rather than generating a new page for each single show?
 
 app.get('/showsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
@@ -78,7 +79,7 @@ app.get('/showsubmit', (req, res) => {
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
-            res.render(`/shows/${showid}`, { documents: documents});
+            res.render(`event`, { documents: documents});
         });
 
     });
