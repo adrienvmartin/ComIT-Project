@@ -253,5 +253,7 @@ app.get('/summary', (req, res) => {
     });
 });
 
+// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page?
+
 
 app.listen(3000);
