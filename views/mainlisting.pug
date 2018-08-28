@@ -25,13 +25,13 @@ block content
             -if (showType == "headlinergig" && openers.length == 0)
                 b #{year}
                 li.show #{showNumber} - 
-                    a(href='event').showlist
+                    a(href=`event${showid}`).showlist
                         b #{val.headliner} 
                         |  - #{writtenDate} @ #{venue}, #{city}
 
             -else if (showType == "headlinergig" && openers.length > 0)
                 li.show #{showNumber} - 
-                    a(href='event').showlist
+                    a(href=`event${showid}`).showlist
                         b #{val.headliner} 
                         | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
             -else if (showType == "festival")
