@@ -14,10 +14,10 @@ block content
             input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
         fieldset
             label Bands:
-            textarea#openers(name='bands', rows='10', placeholder='Enter All Bands')
+            textarea#openers(name='openers', rows='10', placeholder='Enter All Bands')
         fieldset
             input#submit(type='submit', value='Create')
-            input(type='hidden', name='showtype', id='showtype', value='festival')
+            input(type='hidden', name='showtype', id='showtype', value='local')
 
         script.
             // disable "enter" key submission
