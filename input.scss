@@ -1,0 +1,212 @@
+$main-font-color: black;
+$main-font-family: Arial, Helvetica, sans-serif;
+$main-bg-color: darkgrey;
+
+body {
+    color: $main-font;
+    font-family: $main-font-family;
+    background-color: $main-bg-color;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    display: block;
+    background-color: silver;
+    border-width: 1px;
+    border-color: blue;
+    border-style: solid;
+    padding: 20px;
+    text-align: center;
+    font-size: 0;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+display: inline-block;
+color: mediumblue;
+border-right-color: blue;
+border-right-width: 1px;
+border-right-style: dashed;
+padding: 0px;
+padding-right: 10px;
+margin-right: 10px;
+font-size: 16px;
+}
+
+li:last-child {
+    border: none;
+}
+
+li.show {
+    color: black;
+    border: none;
+    padding: 5px;
+}
+
+li.show:hover {
+    background-color: darkgrey;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+li.show:active {
+    background-color: red;
+}
+
+a.showlist {
+    color: black;
+    text-decoration: none;
+}
+
+form {
+background-color: #eee;
+border: 1px solid #ddd;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 16px;
+width: 500px;
+margin-left: auto;
+margin-right: auto;
+padding: 20px 40px;
+/* color: #1abc9c; */
+color: darkslategrey;
+}  
+
+h1 {
+    margin: none;
+    margin-bottom: 40px;
+}
+
+fieldset {
+    border: none;
+    padding: none;
+    margin: 10px 0px;
+}
+
+label {
+    display: inline-block;
+    width: 80px;
+    padding-right: 20px;
+}
+
+input[type="text"], textarea {
+    display: inline-block;
+    width: 417px;
+    padding: 0.5em;
+    font-size: 16px;
+    color: gray;
+}
+
+textarea {
+    vertical-align: middle;
+}
+
+input[type="submit"] {
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: white;
+    background-color: darkslategrey;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    border: 1px solid #16a085;
+}
+
+fieldset:last-child {
+    margin-top: 40px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, button:focus {
+    border: 1px solid #ec576b;
+    box-shadow: 0 6px 6px -6px #777;
+}
+
+.newBandForm:first-child {
+    display: inline-block;
+    width: 417px;
+    padding: 0.5em;
+    margin-top: 20px;
+    font-size: 16px;
+    color: gray;
+    outline-color: darkslategrey;
+    align-content: center;
+}
+
+.newBandForm:last-child {
+    margin-bottom: 20px;
+}
+
+#submitbutton {
+    display: block;
+    padding: 9px 19px 8px 19px;
+    color: white;
+    background-color: darkslategrey;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    border: 1px solid #16a085;
+    margin-bottom: 10px;
+}
+
+#resetbutton {
+    display: block;
+    padding: 9px 19px 8px 19px;
+    color: white;
+    background-color: darkslategrey;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    border: 1px solid #16a085;
+    margin-top: 10px;
+}
+
+#fill {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8;
+    
+}
+
+label {
+    width: 200px;
+}
+
+/* #openers {
+    width: 400px;
+    height: 200px;
+} */
+
+.bandlisting {
+    color: black;
+    text-align: left;
+  
+}
+
+/* .festival {
+    color: darkgreen;
+} */
+
+.bands {
+    text-align: center;
+
+}
+
+.banddiv {
+    border: solid;
+    border-color: silver;
+    margin-left: 200px;
+    margin-right: 200px;
+    color: black;
+    padding: 10px;
+}
+
+.summary {
+    border: solid;
+    border-color: silver;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 25px;
+}
