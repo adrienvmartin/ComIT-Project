@@ -2,15 +2,16 @@
 
 TO DO:
 -Add sorting option for main listing page
--Add function that checks for duplicates for venues/bands/cities and then adds up the totals
-
 -Add Unit Tests***
+-Add delete/update options for show listing
 
 DONE:
 --Make separate pages for headliner gigs vs festivals
 -Separate different opening bands by commas *DONE*
 -Have the date be shown in written format at some point *DONE*
 -Add number to each show *DONE*
+-Add function that checks for duplicates for venues/bands/cities and then adds up the totals *DONE*
+
 
 POSSIBLE:
 -Use the functions from the bands and venues pages in Node Express to generate that data straight into MongoDB
@@ -50,14 +51,14 @@ app.get('/', (req, res) => {
     });
 });
 
+// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page? Perhaps: have one page for shows that dynamically enters the content, rather than generating a new page for each single show?
+
 app.get('/showsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
-
-        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
 
@@ -66,15 +67,15 @@ app.get('/showsubmit', (req, res) => {
 
         let bandList = {"headliner": headliners, "openers": openers};
 
-        collection.insertOne(newshow, (err, result) => {
+        bandCollection.insertOne(bandList, (err, result) => {
         });
 
-        bandCollection.insertOne(bandList, (err, result) => {
+        collection.insertOne(newshow, (err, result) => {
         });
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
-            res.render('mainlisting', { documents: documents});
+            res.render(`mainlisting`, { documents: documents});
         });
 
     });
@@ -105,13 +106,9 @@ app.get('/sortyears', (req, res) => {
 app.get('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
-        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
-
         const db = client.db('showtest');
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
-
-        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
 
@@ -140,13 +137,9 @@ app.get('/festivalsubmit', (req, res) => {
 app.get('/localsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
-        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
-
         const db = client.db('showtest');
         const collection = db.collection('localshows');
         const bandCollection = db.collection('bands');
-
-        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
         const newshow = { "bands": req.query.bands, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
 
@@ -168,38 +161,6 @@ app.get('/localsubmit', (req, res) => {
     });
 
 });
-
-
-
-app.get('/date', (req, res) => {
-    MongoClient.connect(url, function (err, client) {
-        // event.preventDefault();
-        const db = client.db('showtest');
-        const collection = db.collection('show1');
-
-        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
-            client.close();
-            res.render('layout', { documents: documents});
-
-        });
-    });
-});
-
-
-
-app.get('/name', (req, res) => {
-    MongoClient.connect(url, function (err, client) {
-        event.preventDefault();
-        const db = client.db('showtest');
-        const collection = db.collection('show1');
-
-        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
-            client.close();
-            res.render('layout', { documents: documents});
-
-        });
-    });
-})
 
 
 app.get('/mainlisting', (req, res) => {
@@ -252,8 +213,5 @@ app.get('/summary', (req, res) => {
         });
     });
 });
-
-// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page?
-
 
 app.listen(3000);
