@@ -60,11 +60,7 @@ app.get('/showsubmit', (req, res) => {
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
 
-        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
-
-        const showid = `event${Math.random().toString(16).substring(2, 8) + Math.random().toString(16).substring(2, 8)}`;
-
-        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "showid": showid };
+        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
 
         const headliners = req.query.headliner;
         const openers = req.query.openers;
@@ -79,14 +75,12 @@ app.get('/showsubmit', (req, res) => {
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
-            res.render(`event`, { documents: documents});
+            res.render(`mainlisting`, { documents: documents});
         });
 
     });
 
 });
-
-
 
 
 app.get('/sortyears', (req, res) => {
@@ -112,13 +106,9 @@ app.get('/sortyears', (req, res) => {
 app.get('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
-        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
-
         const db = client.db('showtest');
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
-
-        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
 
@@ -147,13 +137,9 @@ app.get('/festivalsubmit', (req, res) => {
 app.get('/localsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
-        // Add a "showtype" function to ALL show submissions, use this on the listings page to differentiate between headliners and festivals
-
         const db = client.db('showtest');
         const collection = db.collection('localshows');
         const bandCollection = db.collection('bands');
-
-        // IMPORTANT: use data from field to display opening bands on page,but MAKE A FUNCTION HERE to separate opening bands into individual bands and enter those into their own database to be used later in the separate pages
 
         const newshow = { "bands": req.query.bands, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
 
@@ -175,38 +161,6 @@ app.get('/localsubmit', (req, res) => {
     });
 
 });
-
-
-
-app.get('/date', (req, res) => {
-    MongoClient.connect(url, function (err, client) {
-        // event.preventDefault();
-        const db = client.db('showtest');
-        const collection = db.collection('show1');
-
-        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
-            client.close();
-            res.render('layout', { documents: documents});
-
-        });
-    });
-});
-
-
-
-app.get('/name', (req, res) => {
-    MongoClient.connect(url, function (err, client) {
-        event.preventDefault();
-        const db = client.db('showtest');
-        const collection = db.collection('show1');
-
-        collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
-            client.close();
-            res.render('layout', { documents: documents});
-
-        });
-    });
-})
 
 
 app.get('/mainlisting', (req, res) => {
@@ -256,18 +210,6 @@ app.get('/summary', (req, res) => {
         collection.find({}).toArray((error, documents) => {
             client.close();
             res.render('summary', {documents: documents});
-        });
-    });
-});
-
-app.get(`/event`, (req, res) => {
-    MongoClient.connect(url, function (err, client) {
-        const db = client.db('showtest');
-        const collection = db.collection('show1');
-
-        collection.find({}).toArray((error, documents) => {
-            client.close();
-            res.render('event', {documents: documents});
         });
     });
 });
