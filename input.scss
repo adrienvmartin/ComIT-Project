@@ -1,6 +1,7 @@
 $main-font-color: black;
 $main-font-family: Arial, Helvetica, sans-serif;
 $main-bg-color: darkgrey;
+$table-blue: blue;
 
 body {
     color: $main-font;
@@ -56,6 +57,11 @@ li.show:hover {
 
 li.show:active {
     background-color: red;
+}
+
+li.menulist:hover {
+    background-color: blue;
+    color: red;
 }
 
 a.showlist {
