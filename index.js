@@ -4,6 +4,7 @@ TO DO:
 -Add sorting option for main listing page
 -Add Unit Tests***
 -Add delete/update options for show listing
+-Add dropdown menu giving option to view venues while clicking on a venue for a particular show - same with cities, bands, etc.
 
 DONE:
 --Make separate pages for headliner gigs vs festivals
@@ -15,6 +16,7 @@ DONE:
 
 POSSIBLE:
 -Use the functions from the bands and venues pages in Node Express to generate that data straight into MongoDB
+-Create object for opening bands to submit to MongoDB?
 
 */
 
