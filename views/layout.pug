@@ -13,7 +13,7 @@ block head
         text-align: center;
     }
 
-    ul {
+    /*ul {
         display: block;
         background-color: silver;
         border-width: 1px;
@@ -57,7 +57,7 @@ block head
 
     li.show:active {
         background-color: red;
-    }
+    } */
 
     a.showlist {
         color: black;
@@ -212,6 +212,84 @@ block head
         padding: 25px;
     }
 
+    /* BREAK */
+
+    #primary_nav_wrap
+    {
+        margin-top:15px;
+    }
+
+    #primary_nav_wrap ul
+    {
+        list-style:none;
+        position:relative;
+        float:left;
+        margin:0;
+        padding:0;
+    }
+
+    #primary_nav_wrap ul a
+    {
+        display:block;
+        color:#333;
+        text-decoration:none;
+        font-weight:700;
+        font-size:12px;
+        line-height:32px;
+        padding:0 15px;
+        font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    #primary_nav_wrap ul li
+    {
+        position:relative;
+        float:left;
+        margin:0;
+        padding:0;
+    }
+
+    #primary_nav_wrap ul li.current-menu-item
+    {
+        background:#ddd;
+    }
+
+    #primary_nav_wrap ul li:hover
+    {
+        background:#f6f6f6;
+    }
+
+    #primary_nav_wrap ul ul
+    {
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        background:#fff;
+        padding:0;
+    }
+
+    #primary_nav_wrap ul ul li
+    {
+        float:none;
+        width:200px;
+    }
+
+    #primary_nav_wrap ul ul a
+    {
+        line-height:120%;
+        padding:10px 15px;
+    }
+
+    #primary_nav_wrap ul ul ul
+    {
+        top:0;
+        left:100%;
+    }
+
+    #primary_nav_wrap ul li:hover > ul
+    {
+        display:block;
+    }
 
 block scripts
     script.
@@ -219,21 +297,28 @@ block scripts
 
 block menu
     br
-    ul.menu
-        li.menulist
-            a(href='/summary') Your Personal Summary
-        li.menulist
-            a(href='mainlisting') Full Listings
-        li.menulist
-            a(href='bands') Bands
-        li.menulist
-            a(href='venues') Venues
-        li.menulist
-            a(href='newshow') Add Headliner Tour
-        li.menulist
-            a(href='newfestival') Add Music Festival
-        li.menulist
-            a(href='newlocal') Add Local Gig 
+    nav#primary_nav_wrap
+        ul.menu.dropdown-toggle(data-toggle="dropdown")
+            li.current-menu-item
+                a(href="#") View
+                ul
+                    li.menulist
+                        a(href='/summary') Your Personal Summary
+                    li.menulist
+                        a(href='mainlisting') Full Listings
+                    li.menulist
+                        a(href='bands') Bands
+                    li.menulist
+                        a(href='venues') Venues
+            li.current-menu-item
+                a(href="#") Add
+                ul
+                    li.menulist
+                        a(href='newshow') Headliner Tour
+                    li.menulist
+                        a(href='newfestival') Music Festival
+                    li.menulist
+                        a(href='newlocal') Local Gig 
 
 block content
 
