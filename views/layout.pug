@@ -298,7 +298,9 @@ block scripts
 block menu
     br
     nav#primary_nav_wrap
-        ul.menu.dropdown-toggle(data-toggle="dropdown")
+        ul.menu
+            li.current-menu-item
+                a(href='/index') Home
             li.current-menu-item
                 a(href="#") View
                 ul
