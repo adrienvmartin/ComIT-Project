@@ -15,11 +15,12 @@ block content
         -let venuesList = [];
         -for (i=0; i < Object.entries(counts).length; i++) {
             -venuesList.push(Object.entries(counts)[i]); }
-        -let fullList = [];
+        -console.log(venuesList);
+        -//venuesList.sort(function(a, b) { return b[1] - a[1]; });
     table#venues
         tr
-            th Venue
-            th # Of Shows
+            th.venue Venue
+            th.number # Of Shows
         each venue in venuesList
             tr
                 td #{venue[0]} 

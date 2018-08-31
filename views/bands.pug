@@ -23,12 +23,14 @@ block content
     -for (i=0; i < Object.entries(counts).length; i++) {
         -bandList.push(Object.entries(counts)[i]); }
     -bandList.shift();
+    -bandList.pop();
+    -bandList.sort(function(a, b) { return b[1] - a[1]; });
     table#bands
         tr
             th Band
             th # Of Shows
         each band in bandList
-            if band[0].charAt(0) != "["
+            if band != undefined
                 if band[1] > 1
                     tr
                         td #{band[0]} 

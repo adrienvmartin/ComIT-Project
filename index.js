@@ -189,7 +189,7 @@ app.get('/bands', (req, res) => {
         const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
 
-        bandCollection.find({}).toArray((error, documents) => {
+        collection.find({}).toArray((error, documents) => {
             client.close();
             res.render('bands', {documents: documents});
         });
