@@ -3,36 +3,121 @@ extends ./layout.pug
 block content
     h1 Main Listing
     br
-    ul.bandlisting
-        -let yearArray = [];
+    -let yearArray = [];
+    -let headlinerTours = [];
+    -let festivalTours = [];
+    -let localGigs = [];
         each val in documents
-            -let showNumber = documents.indexOf(val) + 1;
-            -let headliner = val.headliner;
-            -let openers = val.openers;
-            -let city = val.city;
-            -let venue = val.venue;
-            -let date = val.date;
-            -let writtenDate = val.writtendate;
-            -let showType = val.showtype;
-            -let festivalName = val.festival;
-            -let year = val.date.slice(0, 4);
-            -console.log(year);
+            if (val.showtype == "headlinergig")
+                -headlinerTours.push(val);
+            else if (val.showtype == "festival")
+                -festivalTours.push(val);
+            else if (val.showtype == "local")
+                -localGigs.push(val);
 
-            -let splitOpeners = openers.split(", ");
-            -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
-
-            -if (showType == "headlinergig" && openers.length == 0)
-                b #{year}
-                li.show #{showNumber} - 
-                    b #{val.headliner} 
-                    |  - #{writtenDate} @ #{venue}, #{city}
-
-            -else if (showType == "headlinergig" && openers.length > 0)
-                li.show #{showNumber} - 
-                    b #{val.headliner} 
-                    | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
-            -else if (showType == "festival")
-                li.show #{showNumber} - 
-                    b.festival #{festivalName}
-                    |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
+        h2.title Headliner Tours
             br
+            table#listing
+                tr
+                    th Show #
+                    th Headliner
+                    th Openers
+                    th Date
+                    th Venue
+                    th City
+                each show in headlinerTours
+                    -let showNumber = headlinerTours.indexOf(show) + 1;
+                    -let headliner = show.headliner;
+                    -let openers = show.openers;
+                    -let city = show.city;
+                    -let venue = show.venue;
+                    -let date = show.date;
+                    -let writtenDate = show.writtendate;
+                    -let festivalName = show.festival;
+                    -let year = show.date.slice(0, 4);
+
+                    if (openers.length > 0)
+                        tr
+                            td #{showNumber}
+                            td #{headliner}
+                            td #{openers}
+                            td #{writtenDate}
+                            td #{venue}
+                            td #{city}
+                    else if (openers.length == 0)
+                        tr
+                            td #{showNumber}
+                            td #{headliner}
+                            td None
+                            td #{writtenDate}
+                            td #{venue}
+                            td #{city}
+        br
+        h2.title Music Festivals
+            br
+            table#listing
+                tr
+                    th Show #
+                    th Tour Name
+                    th Bands
+                    th Date
+                    th Venue
+                    th City
+                each show in festivalTours
+                    -let showNumber = festivalTours.indexOf(show) + 1;
+                    -let headliner = show.headliner;
+                    -let openers = show.openers;
+                    -let city = show.city;
+                    -let venue = show.venue;
+                    -let date = show.date;
+                    -let writtenDate = show.writtendate;
+                    -let festivalName = show.festival;
+                    -let year = show.date.slice(0, 4);
+                    -let splitOpeners = openers.split(", ");
+                    -let festivalBands = headliner + ', ' + openers;
+
+                    tr
+                        td #{showNumber}
+                        td #{festivalName}
+                        td #{festivalBands}
+                        td #{writtenDate}
+                        td #{venue}
+                        td #{city}      
+
+        h2.title Local Gigs
+            br
+            table#listing
+                tr
+                    th Show #
+                    th Bands
+                    th Date
+                    th Venue
+                    th City
+                each show in localGigs
+                    -let showNumber = localGigs.indexOf(show) + 1;
+                    -let bands = show.openers;
+                    -let city = show.city;
+                    -let venue = show.venue;
+                    -let date = show.date;
+                    -let writtenDate = show.writtendate;
+                    tr
+                        td #{showNumber}
+                        td #{bands}
+                        td #{writtenDate}
+                        td #{venue}
+                        td #{city}                  
+
+        //-if (showType == "headlinergig" && openers.length == 0)
+            li.show #{showNumber} - 
+                b #{val.headliner} 
+                |  - #{writtenDate} @ #{venue}, #{city}
+
+        //-else if (showType == "headlinergig" && openers.length > 0)
+            li.show #{showNumber} - 
+                b #{val.headliner} 
+                | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
+        //-else if (showType == "festival")
+            li.show #{showNumber} - 
+                b.festival #{festivalName}
+                |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
+        br

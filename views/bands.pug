@@ -23,9 +23,17 @@ block content
     -for (i=0; i < Object.entries(counts).length; i++) {
         -bandList.push(Object.entries(counts)[i]); }
     -bandList.shift();
-    each band in bandList
-        if band[0].charAt(0) != "["
-            if band[1] > 1
-                p.bands #{band[0]} (#{band[1]}x)
-            else
-                p.bands #{band[0]}
+    table#bands
+        tr
+            th Band
+            th # Of Shows
+        each band in bandList
+            if band[0].charAt(0) != "["
+                if band[1] > 1
+                    tr
+                        td #{band[0]} 
+                        td #{band[1]}
+                else
+                    tr
+                        td #{band[0]}
+                        td #{band[1]}

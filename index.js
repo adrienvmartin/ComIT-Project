@@ -38,6 +38,10 @@ app.get('/newfestival', (req, res) => {
     res.render('newfestival', { title: 'Concert Database', message: 'Add New Show' });
 });
 
+app.get('/newlocal', (req, res) => {
+    res.render('newlocal', { title: 'Concert Database', message: 'Add New Show' });
+});
+
 app.get('/', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
@@ -140,12 +144,12 @@ app.get('/localsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
-        const collection = db.collection('localshows');
+        const collection = db.collection('show1');
         const bandCollection = db.collection('bands');
 
-        const newshow = { "bands": req.query.bands, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
+        const newshow = { "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
 
-        let bandList = { "bands": req.query.bands };
+        let bandList = { "openers": req.query.openers };
 
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
