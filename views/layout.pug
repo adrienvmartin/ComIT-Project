@@ -6,7 +6,7 @@ block head
     body {
         color: black;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: darkgrey;
+        background-color: white;
     }
 
     h1 {
@@ -291,6 +291,55 @@ block head
         display:block;
     }
 
+    .menu {
+        float: center;
+    }
+
+    table {
+        float: center;
+        text-align: center;
+        border-style: solid;
+    }
+
+    table#venues {
+        border-collapse: collapse;
+        margin: auto;
+        width: 50%;
+    }
+
+    #venues td, #venues tr {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #venues tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #venues tr:hover {
+        background-color: darkgrey;
+    }
+
+    table#bands {
+        border-collapse: collapse;
+        margin: auto;
+    }
+
+    #bands td, #bands tr {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #bands tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #bands tr:hover {
+        background-color: darkgrey;
+    }
+
+
+
 block scripts
     script.
 
@@ -321,7 +370,7 @@ block menu
                         a(href='newfestival') Music Festival
                     li.menulist
                         a(href='newlocal') Local Gig 
-
+    br
 block content
 
 
