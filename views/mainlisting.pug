@@ -5,33 +5,64 @@ block content
     br
     ul.bandlisting
         -let yearArray = [];
-        each val in documents
-            -let showNumber = documents.indexOf(val) + 1;
-            -let headliner = val.headliner;
-            -let openers = val.openers;
-            -let city = val.city;
-            -let venue = val.venue;
-            -let date = val.date;
-            -let writtenDate = val.writtendate;
-            -let showType = val.showtype;
-            -let festivalName = val.festival;
-            -let year = val.date.slice(0, 4);
-            -console.log(year);
+        table#listing
+            tr
+                th Show #
+                th Headliner
+                th Openers
+                th Date
+                th Venue
+                th City
+            each val in documents
+                -let showNumber = documents.indexOf(val) + 1;
+                -let headliner = val.headliner;
+                -let openers = val.openers;
+                -let city = val.city;
+                -let venue = val.venue;
+                -let date = val.date;
+                -let writtenDate = val.writtendate;
+                -let showType = val.showtype;
+                -let festivalName = val.festival;
+                -let year = val.date.slice(0, 4);
+                -console.log(year);
 
-            -let splitOpeners = openers.split(", ");
-            -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
+                -let splitOpeners = openers.split(", ");
+                -let firstTwoOpeners = splitOpeners[0] + ', ' + splitOpeners[1] + `, & ${splitOpeners.length - 2} others`;
+                if (showType == "headlinergig" && openers.length > 0)
+                    tr
+                        td #{showNumber}
+                        td #{headliner}
+                        td #{openers}
+                        td #{writtenDate}
+                        td #{venue}
+                        td #{city}
+                else if (showType == "headlinergig" && openers.length == 0)
+                    tr
+                        td #{showNumber}
+                        td #{headliner}
+                        td None
+                        td #{writtenDate}
+                        td #{venue}
+                        td #{city}
+                else if (showType == "festival")
+                    tr
+                        td #{showNumber}
+                        td #{headliner}
+                        td #{firstTwoOpeners}
+                        td #{writtenDate}
+                        td #{venue}
+                        td #{city}                   
 
-            -if (showType == "headlinergig" && openers.length == 0)
-                b #{year}
+            //-if (showType == "headlinergig" && openers.length == 0)
                 li.show #{showNumber} - 
                     b #{val.headliner} 
                     |  - #{writtenDate} @ #{venue}, #{city}
 
-            -else if (showType == "headlinergig" && openers.length > 0)
+            //-else if (showType == "headlinergig" && openers.length > 0)
                 li.show #{showNumber} - 
                     b #{val.headliner} 
                     | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
-            -else if (showType == "festival")
+            //-else if (showType == "festival")
                 li.show #{showNumber} - 
                     b.festival #{festivalName}
                     |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}

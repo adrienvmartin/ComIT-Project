@@ -338,6 +338,24 @@ block head
         background-color: darkgrey;
     }
 
+    table#listing {
+        border-collapse: collapse;
+        margin: auto;
+    }
+
+    #listing td, #listing tr {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #listing tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #listing tr:hover {
+        background-color: darkgrey;
+    }
+
 
 
 block scripts
@@ -349,7 +367,7 @@ block menu
     nav#primary_nav_wrap
         ul.menu
             li.current-menu-item
-                a(href='/index') Home
+                a(href='/') Home
             li.current-menu-item
                 a(href="#") View
                 ul
@@ -357,6 +375,9 @@ block menu
                         a(href='/summary') Your Personal Summary
                     li.menulist
                         a(href='mainlisting') Full Listings
+            li.current-menu-item
+                a(href="#") Stats
+                ul
                     li.menulist
                         a(href='bands') Bands
                     li.menulist
