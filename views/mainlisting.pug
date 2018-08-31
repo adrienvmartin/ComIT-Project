@@ -6,11 +6,14 @@ block content
     -let yearArray = [];
     -let headlinerTours = [];
     -let festivalTours = [];
+    -let localGigs = [];
         each val in documents
             if (val.showtype == "headlinergig")
                 -headlinerTours.push(val);
             else if (val.showtype == "festival")
                 -festivalTours.push(val);
+            else if (val.showtype == "local")
+                -localGigs.push(val);
 
         h2.title Headliner Tours
             br
@@ -79,7 +82,30 @@ block content
                         td #{festivalBands}
                         td #{writtenDate}
                         td #{venue}
-                        td #{city}                   
+                        td #{city}      
+
+        h2.title Local Gigs
+            br
+            table#listing
+                tr
+                    th Show #
+                    th Bands
+                    th Date
+                    th Venue
+                    th City
+                each show in localGigs
+                    -let showNumber = localGigs.indexOf(show) + 1;
+                    -let bands = show.openers;
+                    -let city = show.city;
+                    -let venue = show.venue;
+                    -let date = show.date;
+                    -let writtenDate = show.writtendate;
+                    tr
+                        td #{showNumber}
+                        td #{bands}
+                        td #{writtenDate}
+                        td #{venue}
+                        td #{city}                  
 
         //-if (showType == "headlinergig" && openers.length == 0)
             li.show #{showNumber} - 
