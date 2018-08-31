@@ -36,6 +36,10 @@ app.get('/newfestival', (req, res) => {
     res.render('newfestival', { title: 'Concert Database', message: 'Add New Show' });
 });
 
+app.get('/newlocal', (req, res) => {
+    res.render('newlocal', { title: 'Concert Database', message: 'Add New Show' });
+});
+
 app.get('/', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
