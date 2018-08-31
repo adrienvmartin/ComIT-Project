@@ -147,7 +147,7 @@ app.get('/localsubmit', (req, res) => {
 
         const newshow = { "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
 
-        let bandList = { "bands": req.query.bands };
+        let bandList = { "openers": req.query.openers };
 
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
