@@ -83,21 +83,6 @@ const writtenDate = function(date) {
 
 };
 
-const duplicateBands = function(item) {
-    
-}
-
-
-/* Console logging the indexes of the list objects 
--console.log(`The value of index 1 is ${Object.keys(val)[1]}`);
--console.log(`The value of index 2 is ${Object.keys(val)[2]}`);
--console.log(`The value of index 3 is ${Object.keys(val)[3]}`);
--console.log(`The value of index 4 is ${Object.keys(val)[4]}`);
--console.log(`The value of index 5 is ${Object.keys(val)[5]}`);
--console.log(`The value of index 6 is ${Object.keys(val)[6]}`);
--console.log(`The value of index 7 is ${Object.keys(val)[7]}`);
--console.log(`The value of index 8 is ${Object.keys(val)[8]}`);
--console.log('\n'); */
 
 module.exports = {
     writtenDate,

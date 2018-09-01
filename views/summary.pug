@@ -17,12 +17,7 @@ block content
         -cities.push(val.city);
         -venues.push(val.venue);
         -dates.push(val.date);
-        -/*let emptyBands = [];
-        -bands.forEach(function (b) {
-            -if (b == "") {
-                -emptyBands.push(b); } 
-            -});
-        -let bandNumber = bands.length - emptyBands.length;*/
+
     // Sorting the venues to remove duplicates to get an accurate number count
     -let venueCounts = {};
     -venues.sort();
@@ -37,9 +32,6 @@ block content
     -let cityList = [];
     -for (i=0; i < Object.entries(cityCounts).length; i++) {
         -cityList.push(Object.entries(cityCounts)[i]); }
-
-
-    -console.log(bands);
 
     // Getting the years
     -dates.sort();
@@ -57,8 +49,6 @@ block content
         if band == ""
             -emptyBands.push(band);
     -let bandNumber = bands.length - emptyBands.length;
-    -console.log(bands.length);
-    -console.log(emptyBands.length);
     -let yearAverage = (documents.length / numofyears);
     -let bandAverage = (bandNumber / numofyears);
     div.summary

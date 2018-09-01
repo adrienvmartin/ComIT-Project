@@ -107,17 +107,4 @@ block content
                         td #{venue}
                         td #{city}                  
 
-        //-if (showType == "headlinergig" && openers.length == 0)
-            li.show #{showNumber} - 
-                b #{val.headliner} 
-                |  - #{writtenDate} @ #{venue}, #{city}
-
-        //-else if (showType == "headlinergig" && openers.length > 0)
-            li.show #{showNumber} - 
-                b #{val.headliner} 
-                | w/ #{openers} - #{writtenDate} @ #{venue}, #{city}
-        //-else if (showType == "festival")
-            li.show #{showNumber} - 
-                b.festival #{festivalName}
-                |  - #{val.headliner} w/ #{firstTwoOpeners} - #{writtenDate} @ #{venue}, #{city}
         br

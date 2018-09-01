@@ -64,17 +64,8 @@ app.get('/showsubmit', (req, res) => {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
-        const bandCollection = db.collection('bands');
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
-
-        const headliners = req.query.headliner;
-        const openers = req.query.openers;
-
-        let bandList = {"headliner": headliners, "openers": openers};
-
-        bandCollection.insertOne(bandList, (err, result) => {
-        });
 
         collection.insertOne(newshow, (err, result) => {
         });
@@ -89,46 +80,16 @@ app.get('/showsubmit', (req, res) => {
 });
 
 
-app.get('/sortyears', (req, res) => {
-    MongoClient.connect(url, function (err, client) {
-
-        const db = client.db('showtest');
-        const collection = db.collection('show1');
-        const bandCollection = db.collection('bands');
-
-        collection.find({}).toArray((error, documents) => {
-            documents.forEach(function (c) {
-                let id = c._id;
-                let displayYear = c.date.slice(0,4);
-                // collection.updateOne({"_id": id}, { $set: {"year": displayYear}});
-            });
-    });
-    });     
-
-
-});
-
-
 app.get('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
-        const bandCollection = db.collection('bands');
 
         const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
 
-        const headliners = req.query.headliner;
-        const openers = req.query.openers;
-
-        let bandList = {"headliner": headliners, "openers": openers};
-
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
-        });
-
-        bandCollection.insertOne(bandList, (err, result) => {
-
         });
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
@@ -145,18 +106,11 @@ app.get('/localsubmit', (req, res) => {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
-        const bandCollection = db.collection('bands');
 
         const newshow = { "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
 
-        let bandList = { "openers": req.query.openers };
-
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
-        });
-
-        bandCollection.insertOne(bandList, (err, result) => {
-
         });
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
@@ -187,7 +141,6 @@ app.get('/bands', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
         const collection = db.collection('show1');
-        const bandCollection = db.collection('bands');
 
         collection.find({}).toArray((error, documents) => {
             client.close();
