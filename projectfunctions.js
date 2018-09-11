@@ -139,5 +139,5 @@ function sortTable(n) {
   }
 
 module.exports = {
-    writtenDate, sortTable
+    writtenDate, sortTable, newSort
 }
