@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+    h1 Cities List
+    br
+    div
+        -let cities = [];
+        each val in documents
+            -let city = val.city;
+            -cities.push(city);
+        -let cityObject = {};
+        -let counts = {};
+        -cities.sort();
+        -cities.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+        -let citiesList = [];
+        -for (i=0; i < Object.entries(counts).length; i++) {
+            -citiesList.push(Object.entries(counts)[i]); }
+        -//venuesList.sort(function(a, b) { return b[1] - a[1]; });
+    table#venues
+        tr
+            th.city Venue
+            th.number # Of Shows
+        each city in citiesList
+            tr
+                td #{city[0]} 
+                td #{city[1]}

@@ -143,6 +143,19 @@ app.get('/venues', (req, res) => {
     });
 });
 
+app.get('/cities', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+
+        collection.find({}).toArray((error, documents) => {
+            client.close();
+            res.render('cities', {documents: documents});
+        });
+    });
+});
+
+
 app.get('/summary', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
