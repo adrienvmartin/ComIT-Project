@@ -21,19 +21,23 @@ block content
     -bandList.shift();
     -bandList.pop();
     -bandList.sort(function(a, b) { return b[1] - a[1]; });
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+    script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+    script.
+        $(document).ready(function(){ $('#stats').DataTable(); });
     table#stats
-        tr
-            th 
-                b.cursor(onclick='sortTable(0)') Band
-            th 
-                b.cursor(onclick='sortTable(1)') # Of Shows
-        each band in bandList
-            if band != undefined
-                if band[1] > 1
-                    tr
-                        td.name #{band[0]} 
-                        td.name #{band[1]}
-                else
-                    tr
-                        td.name #{band[0]}
-                        td.name #{band[1]}
+        thead
+            tr
+                th Band
+                th # Of Shows
+        tbody
+            each band in bandList
+                if band != undefined
+                    if band[1] > 1
+                        tr
+                            td.name #{band[0]} 
+                            td.name #{band[1]}
+                    else
+                        tr
+                            td.name #{band[0]}
+                            td.name #{band[1]}

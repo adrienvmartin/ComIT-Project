@@ -7,7 +7,8 @@ block content
         -let venues = [];
         each val in documents
             -let venue = val.venue;
-            -venues.push(venue);
+            -let city = val.city;
+            -venues.push(`${venue}` + ' ' + `(${city})`);
         -let venueObject = {};
         -let counts = {};
         -venues.sort();
@@ -15,14 +16,17 @@ block content
         -let venuesList = [];
         -for (i=0; i < Object.entries(counts).length; i++) {
             -venuesList.push(Object.entries(counts)[i]); }
-        -//venuesList.sort(function(a, b) { return b[1] - a[1]; });
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+    script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+    script.
+        $(document).ready(function(){ $('#stats').DataTable(); });
     table#stats
-        tr
-            th.venue 
-                b.cursor(onclick='sortTable(0)') Venue
-            th.number 
-                b.cursor(onclick='sortTable(1)') # Of Shows
-        each venue in venuesList
+        thead
             tr
-                td #{venue[0]} 
-                td #{venue[1]}
+                th.venue Venue
+                th.number # Of Shows
+        tbody
+            each venue in venuesList
+                tr
+                    td #{venue[0]} 
+                    td #{venue[1]}
