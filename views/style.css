@@ -300,22 +300,31 @@ table {
     border-style: solid;
 }
 
-table#venues {
+table#stats {
     border-collapse: collapse;
     margin: auto;
     width: 50%;
 }
 
-#venues td, #venues tr {
+#stats td, #stats tr {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#venues tr:nth-child(even) {
+
+#stats th:hover {
+    color: white;
+}
+
+.cursor {
+    cursor: grab;
+}
+
+#stats tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#venues tr:hover {
+#stats tr:hover {
     background-color: darkgrey;
 }
 
@@ -337,23 +346,23 @@ table#bands {
     background-color: darkgrey;
 }
 
-table#listing {
+table#headliner {
     border-collapse: collapse;
     margin: auto;
 }
 
-#listing td, #listing tr {
+#headliner td, #headliner tr {
     border: 1px solid #ddd;
     padding: 8px;
     font-size: 12pt;
     font-weight: normal;
 }
 
-#listing tr:nth-child(even) {
+#headliner tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#listing tr:hover {
+#headliner tr:hover {
     background-color: darkgrey;
 }
 
@@ -406,3 +415,13 @@ h2.title {
     text-align: center;
     font-family: Helvetica;
 }
+
+
+
+.dataTables_wrapper .dataTables_filter {
+    float: center;
+    text-align: center;
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    margin-left: auto;
+  }

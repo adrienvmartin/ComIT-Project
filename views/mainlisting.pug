@@ -17,94 +17,108 @@ block content
 
         h2.title Headliner Tours
             br
-            table#listing
-                tr
-                    th Show #
-                    th Headliner
-                    th Openers
-                    th Date
-                    th Venue
-                    th City
-                each show in headlinerTours
-                    -let showNumber = headlinerTours.indexOf(show) + 1;
-                    -let headliner = show.headliner;
-                    -let openers = show.openers;
-                    -let city = show.city;
-                    -let venue = show.venue;
-                    -let date = show.date;
-                    -let writtenDate = show.writtendate;
-                    -let festivalName = show.festival;
-                    -let year = show.date.slice(0, 4);
+            script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+            script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+            style
+                include ../jquery.dataTables.css
+            script.
+                $(document).ready(function(){ $('#headliner').DataTable({paging: false, info: false}); });
+            table#headliner
+                thead
+                    tr
+                        th Show #
+                        th Headliner
+                        th Openers
+                        th Date
+                        th Venue
+                        th City
+                tbody
+                    each show in headlinerTours
+                        -let showNumber = headlinerTours.indexOf(show) + 1;
+                        -let headliner = show.headliner;
+                        -let openers = show.openers;
+                        -let city = show.city;
+                        -let venue = show.venue;
+                        -let date = show.date;
+                        -let writtenDate = show.writtendate;
+                        -let festivalName = show.festival;
+                        -let year = show.date.slice(0, 4);
+                            tr
+                                td #{showNumber}
+                                td #{headliner}
+                                td #{openers}
+                                td #{writtenDate}
+                                td #{venue}
+                                td #{city}
 
-                    if (openers.length > 0)
-                        tr
-                            td #{showNumber}
-                            td #{headliner}
-                            td #{openers}
-                            td #{writtenDate}
-                            td #{venue}
-                            td #{city}
-                    else if (openers.length == 0)
-                        tr
-                            td #{showNumber}
-                            td #{headliner}
-                            td None
-                            td #{writtenDate}
-                            td #{venue}
-                            td #{city}
         br
         h2.title Music Festivals
             br
+            script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+            script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+            style
+                include ../jquery.dataTables.css
+            script.
+                $(document).ready(function(){ $('#festivals').DataTable({ paging: false, info: false }); });
             table#festivals
-                tr
-                    th Show #
-                    th Tour Name
-                    th Bands
-                    th Date
-                    th Venue
-                    th City
-                each show in festivalTours
-                    -let showNumber = festivalTours.indexOf(show) + 1;
-                    -let headliner = show.headliner;
-                    -let openers = show.openers;
-                    -let city = show.city;
-                    -let venue = show.venue;
-                    -let date = show.date;
-                    -let writtenDate = show.writtendate;
-                    -let festivalName = show.festival;
-                    -let year = show.date.slice(0, 4);
-                    -let splitOpeners = openers.split(", ");
-                    -let festivalBands = headliner + ', ' + openers;
-
+                thead
                     tr
-                        td #{showNumber}
-                        td #{festivalName}
-                        td #{festivalBands}
-                        td #{writtenDate}
-                        td #{venue}
-                        td #{city}      
+                        th Show #
+                        th Tour Name
+                        th Bands
+                        th Date
+                        th Venue
+                        th City
+                tbody
+                    each show in festivalTours
+                        -let showNumber = festivalTours.indexOf(show) + 1;
+                        -let headliner = show.headliner;
+                        -let openers = show.openers;
+                        -let city = show.city;
+                        -let venue = show.venue;
+                        -let date = show.date;
+                        -let writtenDate = show.writtendate;
+                        -let festivalName = show.festival;
+                        -let year = show.date.slice(0, 4);
+                        -let splitOpeners = openers.split(", ");
+                        -let festivalBands = headliner + ', ' + openers;
+                            tr
+                                td #{showNumber}
+                                td #{festivalName}
+                                td #{festivalBands}
+                                td #{writtenDate}
+                                td #{venue}
+                                td #{city}      
 
         h2.title Local Gigs
             br
-            table#locals
-                tr
-                    th Show #
-                    th Bands
-                    th Date
-                    th Venue
-                    th City
-                each show in localGigs
-                    -let showNumber = localGigs.indexOf(show) + 1;
-                    -let bands = show.openers;
-                    -let city = show.city;
-                    -let venue = show.venue;
-                    -let date = show.date;
-                    -let writtenDate = show.writtendate;
+            script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+            script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+            style
+                include ../jquery.dataTables.css
+            script.
+                $(document).ready(function(){ $('#local').DataTable({ paging: false, info: false }); });
+            table#local
+                thead
                     tr
-                        td #{showNumber}
-                        td #{bands}
-                        td #{writtenDate}
-                        td #{venue}
-                        td #{city}                  
+                        th Show #
+                        th Bands
+                        th Date
+                        th Venue
+                        th City
+                tbody
+                    each show in localGigs
+                        -let showNumber = localGigs.indexOf(show) + 1;
+                        -let bands = show.openers;
+                        -let city = show.city;
+                        -let venue = show.venue;
+                        -let date = show.date;
+                        -let writtenDate = show.writtendate;
+                            tr
+                                td #{showNumber}
+                                td #{bands}
+                                td #{writtenDate}
+                                td #{venue}
+                                td #{city}                  
 
         br

@@ -27,11 +27,19 @@ block content
         -venuesList.push(Object.entries(venueCounts)[i]); }
 
     // Sorting the cities for accurate count
-    -var cityCounts = {};
+    -let cityCounts = {};
     -cities.forEach(function(x) { cityCounts[x] = (cityCounts[x] || 0)+1; });
     -let cityList = [];
     -for (i=0; i < Object.entries(cityCounts).length; i++) {
         -cityList.push(Object.entries(cityCounts)[i]); }
+
+    // Sorting the bands for accurate count
+    -let bandCounts = {};
+    -bands.forEach(function(x) { bandCounts[x] = (bandCounts[x] || 0) + 1; });
+    -let bandList = [];
+    -for (i=0; i < Object.entries(bandCounts).length; i++) {
+        -bandList.push(Object.entries(bandCounts)[i]); }
+
 
     // Getting the years
     -dates.sort();
@@ -45,13 +53,15 @@ block content
     -let numofyears = years(firstDate, lastDate);
 
     -let emptyBands = [];
-    each band in bands
+    -bandList.shift();
+    -bandList.pop();
+    each band in bandList
         if band == ""
             -emptyBands.push(band);
-    -let bandNumber = bands.length - emptyBands.length;
+    -let bandNumber = bandList.length - emptyBands.length;
     -let yearAverage = (documents.length / numofyears);
     -let bandAverage = (bandNumber / numofyears);
     div.summary
-        p.bands You've seen #{bandNumber} bands at #{documents.length} shows, in #{venuesList.length} venues in #{cityList.length} cities over the course of #{numofyears} years. 
+        p.bands You've seen #{bandNumber} unique bands at #{documents.length} shows, in #{venuesList.length} venues in #{cityList.length} cities over the course of #{numofyears} years. 
         p.bands This means an average of #{yearAverage.toFixed(1)} shows per year, and an average of #{bandAverage.toFixed(1)} bands per year.
         br
