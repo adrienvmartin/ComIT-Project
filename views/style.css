@@ -300,22 +300,31 @@ table {
     border-style: solid;
 }
 
-table#venues {
+table#stats {
     border-collapse: collapse;
     margin: auto;
     width: 50%;
 }
 
-#venues td, #venues tr {
+#stats td, #stats tr {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#venues tr:nth-child(even) {
+
+#stats th:hover {
+    color: white;
+}
+
+.cursor {
+    cursor: grab;
+}
+
+#stats tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#venues tr:hover {
+#stats tr:hover {
     background-color: darkgrey;
 }
 

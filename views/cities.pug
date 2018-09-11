@@ -16,10 +16,14 @@ block content
         -for (i=0; i < Object.entries(counts).length; i++) {
             -citiesList.push(Object.entries(counts)[i]); }
         -//venuesList.sort(function(a, b) { return b[1] - a[1]; });
-    table#venues
+
+        p.bands You've been to shows in #{citiesList.length} cities. Click on "Cities" or "# Of Shows" to sort the tables.
+    table#stats
         tr
-            th.city Venue
-            th.number # Of Shows
+            th.city 
+                b.cursor(onclick='sortTable(0)') City
+            th.number 
+                b.cursor(onclick='sortTable(1)') # Of Shows
         each city in citiesList
             tr
                 td #{city[0]} 

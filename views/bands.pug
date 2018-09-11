@@ -21,10 +21,12 @@ block content
     -bandList.shift();
     -bandList.pop();
     -bandList.sort(function(a, b) { return b[1] - a[1]; });
-    table#bands
+    table#stats
         tr
-            th Band
-            th # Of Shows
+            th 
+                b.cursor(onclick='sortTable(0)') Band
+            th 
+                b.cursor(onclick='sortTable(1)') # Of Shows
         each band in bandList
             if band != undefined
                 if band[1] > 1

@@ -16,10 +16,12 @@ block content
         -for (i=0; i < Object.entries(counts).length; i++) {
             -venuesList.push(Object.entries(counts)[i]); }
         -//venuesList.sort(function(a, b) { return b[1] - a[1]; });
-    table#venues
+    table#stats
         tr
-            th.venue Venue
-            th.number # Of Shows
+            th.venue 
+                b.cursor(onclick='sortTable(0)') Venue
+            th.number 
+                b.cursor(onclick='sortTable(1)') # Of Shows
         each venue in venuesList
             tr
                 td #{venue[0]} 
