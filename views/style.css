@@ -346,23 +346,23 @@ table#bands {
     background-color: darkgrey;
 }
 
-table#listing {
+table#headliner {
     border-collapse: collapse;
     margin: auto;
 }
 
-#listing td, #listing tr {
+#headliner td, #headliner tr {
     border: 1px solid #ddd;
     padding: 8px;
     font-size: 12pt;
     font-weight: normal;
 }
 
-#listing tr:nth-child(even) {
+#headliner tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#listing tr:hover {
+#headliner tr:hover {
     background-color: darkgrey;
 }
 
