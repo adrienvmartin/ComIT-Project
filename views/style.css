@@ -381,3 +381,28 @@ table#festivals {
 #festivals tr:nth-child(odd) {
     background-color: rgba(0,150,0,0.3);
 }
+
+table#local {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#local td, #local tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+#local tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#local tr:hover {
+    background-color: darkgrey;
+}
+
+h2.title {
+    text-align: center;
+    font-family: Helvetica;
+}
