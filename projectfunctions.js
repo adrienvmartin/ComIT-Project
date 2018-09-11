@@ -138,6 +138,10 @@ function sortTable(n) {
     }
   }
 
+var $ = require('jquery');
+
+function dataTable() { $(document).ready( function () { $('#table_id').DataTable(); } ); }
+
 module.exports = {
-    writtenDate, sortTable, newSort
+    writtenDate, sortTable, dataTable
 }

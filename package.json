@@ -20,7 +20,11 @@
   },
   "homepage": "https://github.com/adrienvmartin/ComIT-Project#readme",
   "dependencies": {
+    "datatables.net": "^1.10.19",
+    "datatables.net-dt": "^1.10.19",
     "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "jsdom": "^12.0.0",
     "mongodb": "^3.1.1",
     "pug": "^2.0.3"
   },
