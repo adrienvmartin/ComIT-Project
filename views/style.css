@@ -211,7 +211,11 @@ label {
 
 #primary_nav_wrap
 {
-    margin-top:15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15em;
+    padding-bottom: 30px;
+    
 }
 
 #primary_nav_wrap ul
