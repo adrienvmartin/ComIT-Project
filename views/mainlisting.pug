@@ -19,8 +19,10 @@ block content
             br
             script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
             script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+            style
+                include ../jquery.dataTables.css
             script.
-                $(document).ready(function(){ $('#stats').DataTable(); });
+                $(document).ready(function(){ $('#headliner').DataTable(); });
             table#headliner
                 thead
                     tr
@@ -99,8 +101,10 @@ block content
             br
             script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
             script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+            style
+                include ../jquery.dataTables.css
             script.
-                $(document).ready(function(){ $('#stats').DataTable(); });
+                $(document).ready(function(){ $('#local').DataTable({ paging: false, info: false }); });
             table#local
                 thead
                     tr
@@ -109,19 +113,19 @@ block content
                         th Date
                         th Venue
                         th City
-                each show in localGigs
-                    -let showNumber = localGigs.indexOf(show) + 1;
-                    -let bands = show.openers;
-                    -let city = show.city;
-                    -let venue = show.venue;
-                    -let date = show.date;
-                    -let writtenDate = show.writtendate;
-                    tbody
-                        tr
-                            td #{showNumber}
-                            td #{bands}
-                            td #{writtenDate}
-                            td #{venue}
-                            td #{city}                  
+                tbody
+                    each show in localGigs
+                        -let showNumber = localGigs.indexOf(show) + 1;
+                        -let bands = show.openers;
+                        -let city = show.city;
+                        -let venue = show.venue;
+                        -let date = show.date;
+                        -let writtenDate = show.writtendate;
+                            tr
+                                td #{showNumber}
+                                td #{bands}
+                                td #{writtenDate}
+                                td #{venue}
+                                td #{city}                  
 
         br

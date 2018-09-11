@@ -415,3 +415,13 @@ h2.title {
     text-align: center;
     font-family: Helvetica;
 }
+
+
+
+.dataTables_wrapper .dataTables_filter {
+    float: center;
+    text-align: center;
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    margin-left: auto;
+  }
