@@ -1,0 +1,44 @@
+extends layout.pug
+
+block head
+
+    title= title
+    style
+        include style.css
+
+
+block content
+    h1 Cities List
+    br
+    div
+        -let cities = [];
+        each val in documents
+            -let city = val.city;
+            -cities.push(city);
+        -let cityObject = {};
+        -let counts = {};
+        -cities.sort();
+        -cities.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+        -let citiesList = [];
+        -for (i=0; i < Object.entries(counts).length; i++) {
+            -citiesList.push(Object.entries(counts)[i]); }
+        
+        p.bands You've been to shows in #{citiesList.length} cities. Click on "Cities" or "# Of Shows" to sort the tables.
+        script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+        script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
+        style
+            include ../jquery.dataTables.css
+        script.
+            $(document).ready(function(){ $('#stats').DataTable( {
+                paging: false, order: [[1, 'desc']], info: false
+                }); });
+        table#stats
+            thead
+                tr
+                    th.city City
+                    th.number # Of Shows
+            tbody
+                each city in citiesList
+                    tr
+                        td #{city[0]} 
+                        td #{city[1]}

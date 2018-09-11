@@ -2,9 +2,10 @@ $main-font-color: black;
 $main-font-family: Arial, Helvetica, sans-serif;
 $main-bg-color: darkgrey;
 $table-blue: blue;
+$festival-color: darkseagreen;
 
 body {
-    color: $main-font;
+    color: $main-font-color;
     font-family: $main-font-family;
     background-color: $main-bg-color;
 }

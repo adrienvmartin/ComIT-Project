@@ -1,25 +1,3 @@
-/*
-
-TO DO:
--Add sorting option for main listing page
--Add Unit Tests***
--Add delete/update options for show listing
--Add dropdown menu giving option to view venues while clicking on a venue for a particular show - same with cities, bands, etc.
-
-DONE:
---Make separate pages for headliner gigs vs festivals
--Separate different opening bands by commas *DONE*
--Have the date be shown in written format at some point *DONE*
--Add number to each show *DONE*
--Add function that checks for duplicates for venues/bands/cities and then adds up the totals *DONE*
-
-
-POSSIBLE:
--Use the functions from the bands and venues pages in Node Express to generate that data straight into MongoDB
--Create object for opening bands to submit to MongoDB?
-
-*/
-
 const express = require('express');
 const app = express();
 
@@ -29,6 +7,10 @@ const url = 'mongodb://localhost:27017';
 const functions = require('./projectfunctions.js');
 
 app.set('view engine', 'pug');
+
+app.get('style.css',function(req,res){
+    res.sendFile(path.join(__dirname + 'output.css')); 
+  });
 
 app.get('/newshow', (req, res) => {
     res.render('newshow', { title: 'Concert Database', message: 'Add New Show' });
@@ -160,6 +142,19 @@ app.get('/venues', (req, res) => {
         });
     });
 });
+
+app.get('/cities', (req, res) => {
+    MongoClient.connect(url, function (err, client) {
+        const db = client.db('showtest');
+        const collection = db.collection('show1');
+
+        collection.find({}).toArray((error, documents) => {
+            client.close();
+            res.render('cities', {documents: documents});
+        });
+    });
+});
+
 
 app.get('/summary', (req, res) => {
     MongoClient.connect(url, function (err, client) {
