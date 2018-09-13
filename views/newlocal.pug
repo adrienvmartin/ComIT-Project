@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
     h1 Add New Local Show
-    form#newheadliner(action='localsubmit', method='get')
+    form#newheadliner(action='localsubmit', method='post')
         fieldset
             label City:
             input(type='text', name='city')
