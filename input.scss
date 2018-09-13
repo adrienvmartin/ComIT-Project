@@ -4,10 +4,23 @@ $main-bg-color: darkgrey;
 $table-blue: blue;
 $festival-color: darkseagreen;
 
+/* Version 1
+$color1: #f1f2eb;
+$color2: #d8dad3;
+$color3: #a4c2a5;
+$color4: #566246;
+$color5: #4a4a48; */
+
+$color1: rgba(19, 64, 116, 1);
+$color2: rgba(19, 49, 92, 1);
+$color3: rgba(11, 37, 69, 1);
+$color4: rgba(141, 169, 196, 1);
+$color5: rgba(238, 244, 237, 1);
+
 body {
-    color: black;
+    color: $main-font-color;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+    background-color: $color5;
 }
 
 h1 {
@@ -20,8 +33,8 @@ a.showlist {
 }
 
 form {
-background-color: #eee;
-border: 1px solid #ddd;
+background-color: $color5;
+border: 1px solid $color4;
 font-family: Arial, Helvetica, sans-serif;
 font-size: 16px;
 width: 500px;
@@ -29,7 +42,7 @@ margin-left: auto;
 margin-right: auto;
 padding: 20px 40px;
 /* color: #1abc9c; */
-color: darkslategrey;
+color: $color2;
 }  
 
 h1 {
@@ -65,7 +78,7 @@ input[type="submit"] {
     display: block;
     padding: 19px 39px 18px 39px;
     color: white;
-    background-color: darkslategrey;
+    background-color: $color4;
     font-size: 18px;
     text-align: center;
     width: 100%;
@@ -325,17 +338,28 @@ table#bands {
 
 // MAIN LISTING - HEADLINER TOURS
 
-table#headliner {
+$table-color1: rgba(193, 237, 204, 1);
+$table-color2: rgba(255, 208, 0, 0.651);
+$table-font-size: 10pt;
+
+
+@mixin table($width, $color) {
     border-collapse: collapse;
     margin-right: auto;
     margin-left: auto;
-    width: 45em;
+    width: $width;
+    background-color: $color;
 }
+
+table#headliner {
+    @include table(45em, $color4);
+}
+
 
 #headliner td, #headliner tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 10pt;
+    font-size: $table-font-size;
     font-weight: normal;
 }
 
@@ -357,38 +381,36 @@ h2.title {
 // MAIN LISTING - MUSIC FESTIVALS
 
 table#festivals {
-    border-collapse: collapse;
-    margin: auto;
+    @include table(55em, $table-color1);
 }
 
 #festivals td, #festivals tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 12pt;
+    font-size: $table-font-size;
     font-weight: normal;
 }
 
-#festivals tr:nth-child(even) {
+/*#festivals tr:nth-child(even) {
     background-color: rgba(0,50,0,0.3);
 }
 
 #festivals tr:nth-child(odd) {
     background-color: rgba(0,150,0,0.3);
-}
+}*/
 
 
 
 // MAIN LISTING - LOCAL GIGS
 
 table#local {
-    border-collapse: collapse;
-    margin: auto;
+    @include table(45em, $table-color2);
 }
 
 #local td, #local tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 12pt;
+    font-size: $table-font-size;
     font-weight: normal;
 }
 
