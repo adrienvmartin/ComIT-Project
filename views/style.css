@@ -348,13 +348,15 @@ table#bands {
 
 table#headliner {
     border-collapse: collapse;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
+    width: 45em;
 }
 
 #headliner td, #headliner tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 12pt;
+    font-size: 10pt;
     font-weight: normal;
 }
 
