@@ -4,7 +4,7 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
-const functions = require('./projectfunctions.js');
+const functions = require('./javascript/projectfunctions.js');
 
 app.set('view engine', 'pug');
 
