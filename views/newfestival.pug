@@ -3,7 +3,7 @@ extends layout.pug
 block content
     h1 Add New Music Festival
     br
-    form#newheadliner(action='festivalsubmit', method='get')
+    form#newheadliner(action='festivalsubmit', method='post')
         fieldset
             label Festival Name:
             input(type="text", name="festival", id="festival")

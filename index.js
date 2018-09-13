@@ -49,8 +49,6 @@ app.get('/', (req, res) => {
     });
 });
 
-// Function for generating band pages: app.get - collection.find() - res.render ('variable') - insert in "/showsubmit" rather than rendering the mainlisting page? Perhaps: have one page for shows that dynamically enters the content, rather than generating a new page for each single show?
-
 app.post('/showsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
@@ -72,13 +70,13 @@ app.post('/showsubmit', (req, res) => {
 });
 
 
-app.get('/festivalsubmit', (req, res) => {
+app.post('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
 
-        const newshow = { "headliner": req.query.headliner, "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype, "festival": req.query.festival };
+        const newshow = { "headliner": req.body.headliner, "openers": req.body.openers, "city": req.body.city, "venue": req.body.venue, "date": req.body.date, "writtendate": functions.writtenDate(req.body.date), "showtype": req.body.showtype, "festival": req.body.festival };
 
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
@@ -93,13 +91,13 @@ app.get('/festivalsubmit', (req, res) => {
 
 });
 
-app.get('/localsubmit', (req, res) => {
+app.post('/localsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
         const collection = db.collection('show1');
 
-        const newshow = { "openers": req.query.openers, "city": req.query.city, "venue": req.query.venue, "date": req.query.date, "writtendate": functions.writtenDate(req.query.date), "showtype": req.query.showtype };
+        const newshow = { "openers": req.body.openers, "city": req.body.city, "venue": req.body.venue, "date": req.body.date, "writtendate": functions.writtenDate(req.body.date), "showtype": req.body.showtype };
 
         collection.insertOne(newshow, (err, result) => {
             // callback(result);
