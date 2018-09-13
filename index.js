@@ -23,15 +23,15 @@ app.get('style.css',function(req,res){
   });
 
 app.get('/newshow', (req, res) => {
-    res.render('newshow', { title: 'Concert Database', message: 'Add New Show' });
+    res.render('newshow', { title: 'Concert Database', message: 'Add Headlining Tour' });
 });
 
 app.get('/newfestival', (req, res) => {
-    res.render('newfestival', { title: 'Concert Database', message: 'Add New Show' });
+    res.render('newfestival', { title: 'Concert Database', message: 'Add Music Festival' });
 });
 
 app.get('/newlocal', (req, res) => {
-    res.render('newlocal', { title: 'Concert Database', message: 'Add New Show' });
+    res.render('newlocal', { title: 'Concert Database', message: 'Add Local Gig' });
 });
 
 app.get('/', (req, res) => {
