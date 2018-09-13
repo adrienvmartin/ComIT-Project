@@ -27,8 +27,7 @@ block content
                 thead
                     tr
                         th Show #
-                        th Headliner
-                        th Openers
+                        th Bands
                         th Date
                         th Venue
                         th City
@@ -43,10 +42,20 @@ block content
                         -let writtenDate = show.writtendate;
                         -let festivalName = show.festival;
                         -let year = show.date.slice(0, 4);
+                        if (openers.length > 0)
                             tr
                                 td #{showNumber}
-                                td #{headliner}
-                                td #{openers}
+                                td 
+                                    b #{headliner} 
+                                    | w/ #{openers}
+                                td #{writtenDate}
+                                td #{venue}
+                                td #{city}
+                        else if (openers.length == 0)
+                            tr
+                                td #{showNumber}
+                                td 
+                                    b #{headliner}
                                 td #{writtenDate}
                                 td #{venue}
                                 td #{city}
