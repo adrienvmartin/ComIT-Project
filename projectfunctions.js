@@ -83,6 +83,10 @@ const writtenDate = function(date) {
 
 };
 
+const checkDate = function() {
+
+}
+
 module.exports = {
     writtenDate
 }
