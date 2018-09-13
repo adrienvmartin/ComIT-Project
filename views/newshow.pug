@@ -3,6 +3,8 @@ extends layout.pug
 block content
     h1 Add New Headlining Show
     br
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+    script(type='text/javascript', src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
     form#newheadliner(action='showsubmit', method='get')
         fieldset
             label Headliner:
@@ -15,7 +17,7 @@ block content
             input(type='text', name='venue')
         fieldset
             label Date:
-            input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
+            input#datepicker(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
         fieldset
             label Opening Bands:
             textarea#openers(name='openers', rows='10', placeholder='Enter Opening Band')
