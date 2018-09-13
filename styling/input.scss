@@ -5,65 +5,13 @@ $table-blue: blue;
 $festival-color: darkseagreen;
 
 body {
-    color: $main-font-color;
-    font-family: $main-font-family;
-    background-color: $main-bg-color;
-    text-align: center;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
 }
 
 h1 {
     text-align: center;
-}
-
-ul {
-    display: block;
-    background-color: silver;
-    border-width: 1px;
-    border-color: blue;
-    border-style: solid;
-    padding: 20px;
-    text-align: center;
-    font-size: 0;
-    width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-li {
-display: inline-block;
-color: mediumblue;
-border-right-color: blue;
-border-right-width: 1px;
-border-right-style: dashed;
-padding: 0px;
-padding-right: 10px;
-margin-right: 10px;
-font-size: 16px;
-}
-
-li:last-child {
-    border: none;
-}
-
-li.show {
-    color: black;
-    border: none;
-    padding: 5px;
-}
-
-li.show:hover {
-    background-color: darkgrey;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-li.show:active {
-    background-color: red;
-}
-
-li.menulist:hover {
-    background-color: blue;
-    color: red;
 }
 
 a.showlist {
@@ -218,3 +166,253 @@ label {
     margin-right: 200px;
     padding: 25px;
 }
+
+
+
+
+// MAIN MENU
+
+#primary_nav_wrap
+{
+    margin-right: auto;
+    margin-left: auto;
+    width: 15em;
+    padding-bottom: 30px;
+    
+}
+
+#primary_nav_wrap ul
+{
+    list-style:none;
+    position:relative;
+    float:left;
+    margin:0;
+    padding:0;
+}
+
+#primary_nav_wrap ul a
+{
+    display:block;
+    color:#333;
+    text-decoration:none;
+    font-weight:700;
+    font-size:12px;
+    line-height:32px;
+    padding:0 15px;
+    font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#primary_nav_wrap ul li
+{
+    position:relative;
+    float:left;
+    margin:0;
+    padding:0;
+}
+
+#primary_nav_wrap ul li.current-menu-item
+{
+    background:#ddd;
+}
+
+#primary_nav_wrap ul li:hover
+{
+    background:#f6f6f6;
+}
+
+#primary_nav_wrap ul ul
+{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background:#fff;
+    padding:0;
+}
+
+#primary_nav_wrap ul ul li
+{
+    float:none;
+    width:200px;
+}
+
+#primary_nav_wrap ul ul a
+{
+    line-height:120%;
+    padding:10px 15px;
+}
+
+#primary_nav_wrap ul ul ul
+{
+    top:0;
+    left:100%;
+}
+
+#primary_nav_wrap ul li:hover > ul
+{
+    display:block;
+}
+
+.menu {
+    float: center;
+}
+
+table {
+    float: center;
+    text-align: center;
+    border-style: solid;
+}
+
+
+
+
+
+// STATS
+
+table#stats {
+    border-collapse: collapse;
+    margin: auto;
+    width: 50%;
+}
+
+#stats td, #stats tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+#stats th:hover {
+    color: white;
+}
+
+.cursor {
+    cursor: grab;
+}
+
+#stats tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#stats tr:hover {
+    background-color: darkgrey;
+}
+
+
+
+
+
+// BANDS
+
+table#bands {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#bands td, #bands tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#bands tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#bands tr:hover {
+    background-color: darkgrey;
+}
+
+
+
+// MAIN LISTING - HEADLINER TOURS
+
+table#headliner {
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+    width: 45em;
+}
+
+#headliner td, #headliner tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+#headliner tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#headliner tr:hover {
+    background-color: darkgrey;
+}
+
+h2.title {
+    text-align: center;
+    font-family: Helvetica;
+}
+
+
+
+// MAIN LISTING - MUSIC FESTIVALS
+
+table#festivals {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#festivals td, #festivals tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+#festivals tr:nth-child(even) {
+    background-color: rgba(0,50,0,0.3);
+}
+
+#festivals tr:nth-child(odd) {
+    background-color: rgba(0,150,0,0.3);
+}
+
+
+
+// MAIN LISTING - LOCAL GIGS
+
+table#local {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#local td, #local tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+#local tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#local tr:hover {
+    background-color: darkgrey;
+}
+
+h2.title {
+    text-align: center;
+    font-family: Helvetica;
+}
+
+
+
+// DATA TABLES
+
+.dataTables_wrapper .dataTables_filter {
+    float: center;
+    text-align: center;
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    margin-left: auto;
+  }
