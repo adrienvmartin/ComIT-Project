@@ -26,13 +26,8 @@ block content
             let form = document.querySelector('form');
 
             form.onsubmit = function() {
-                    // event.preventDefault();
-
                     let formElements = document.getElementById("newheadliner").elements;
                     let postData = {};
-
-                    // Split opener form values into individual items, push them into an array, send that array to the form submission
-
                     for (let i = 0; i < formElements.length; i++) {
                         if (formElements[i].type != "submit") 
                             postData[formElements[i].name] = formElements[i].value;
