@@ -8,52 +8,6 @@ h1 {
     text-align: center;
 }
 
-/*ul {
-    display: block;
-    background-color: silver;
-    border-width: 1px;
-    border-color: blue;
-    border-style: solid;
-    padding: 20px;
-    text-align: center;
-    font-size: 0;
-    width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-li {
-display: inline-block;
-color: mediumblue;
-border-right-color: blue;
-border-right-width: 1px;
-border-right-style: dashed;
-padding: 0px;
-padding-right: 10px;
-margin-right: 10px;
-font-size: 16px;
-}
-
-li:last-child {
-    border: none;
-}
-
-li.show {
-    color: black;
-    border: none;
-    padding: 5px;
-}
-
-li.show:hover {
-    background-color: darkgrey;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-li.show:active {
-    background-color: red;
-} */
-
 a.showlist {
     color: black;
     text-decoration: none;

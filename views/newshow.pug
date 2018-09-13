@@ -16,11 +16,6 @@ block content
         fieldset
             label Date:
             input(type='date', name='date', value='2018-08-02', min='1900-01-01', max='2020-12-31')
-        // fieldset
-            label Show Type:
-            select(name="typeofshow")
-                option(value='touring') Touring
-                option(value='local') Local
         fieldset
             label Opening Bands:
             textarea#openers(name='openers', rows='10', placeholder='Enter Opening Band')
@@ -35,13 +30,8 @@ block content
             let form = document.querySelector('form');
 
             form.onsubmit = function() {
-                    // event.preventDefault();
-
                     let formElements = document.getElementById("newheadliner").elements;
                     let postData = {};
-
-                    // Split opener form values into individual items, push them into an array, send that array to the form submission
-
                     for (let i = 0; i < formElements.length; i++) {
                         if (formElements[i].type != "submit") 
                             postData[formElements[i].name] = formElements[i].value;
