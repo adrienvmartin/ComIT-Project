@@ -280,8 +280,8 @@ h2.title {
   text-align: center;
   font-family: Helvetica; }
 
-tr[class$="1"] {
-  background-color: green; }
+.red {
+  background-color: red; }
 
 table#festivals {
   border-collapse: collapse;
