@@ -2,6 +2,7 @@ extends layout.pug
 
 block content
     h1 Band List
+    br
     -let bands = [];
     each val in documents
         -let headliners = val.headliner;

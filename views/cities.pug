@@ -1,11 +1,5 @@
 extends layout.pug
 
-block head
-
-    title= title
-    style
-        include style.css
-
 
 block content
     h1 Cities List
@@ -23,7 +17,7 @@ block content
         -for (i=0; i < Object.entries(counts).length; i++) {
             -citiesList.push(Object.entries(counts)[i]); }
         
-        p.bands You've been to shows in #{citiesList.length} cities. Click on "Cities" or "# Of Shows" to sort the tables.
+        p.bands You've been to shows in #{citiesList.length} cities.
         script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
         script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
         style
