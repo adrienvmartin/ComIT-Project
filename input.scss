@@ -330,8 +330,12 @@ table#headliner {
     background-color: #f2f2f2;
 }
 
-#headliner tr:hover {
-    background-color: $color8;
+#headliner thead tr:hover {
+    background-color: darken($color4, 20%);
+}
+
+#headliner tbody tr:hover {
+    background-color: rgba(35, 133, 224, 0.2);
 }
 
 h2.title {
@@ -339,9 +343,6 @@ h2.title {
     font-family: Helvetica;
 }
 
-.red {
-    background-color: red;
-}
 
 
 
@@ -358,6 +359,14 @@ table#festivals {
     padding: 8px;
     font-size: $table-font-size;
     font-weight: normal;
+}
+
+#festivals thead:hover {
+    background-color: darken($festival-color-main, 20%);
+}
+
+#festivals tr:hover {
+    background-color: rgba(38, 204, 32, 0.137);
 }
 
 
@@ -380,7 +389,7 @@ table#local {
 }
 
 #local tr:hover {
-    background-color: $color5;
+    background-color: rgba(170, 168, 29, 0.2);
 }
 
 h2.title {
@@ -401,3 +410,19 @@ h2.title {
   .dataTables_wrapper .dataTables_filter input {
     margin: auto;
   }
+
+#headliner td.sorting_1 {
+    background-color: rgba(29, 102, 170, 0.2);
+}
+
+#festivals td.sorting_1 {
+    background-color: rgba(34, 170, 29, 0.2);
+}
+
+#local td.sorting_1 {
+    background-color: rgba(170, 168, 29, 0.2);
+}
+
+#stats td.sorting_1 {
+    background-color: darken($color5, 20%);
+}

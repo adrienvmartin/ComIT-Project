@@ -62,6 +62,19 @@ block content
     -let yearAverage = (documents.length / numofyears);
     -let bandAverage = (bandNumber / numofyears);
     div.summary
-        p.bands You've seen #{bandNumber} unique bands at #{documents.length} shows, in #{venuesList.length} venues in #{cityList.length} cities over the course of #{numofyears} years. 
-        p.bands This means an average of #{yearAverage.toFixed(1)} shows per year, and an average of #{bandAverage.toFixed(1)} bands per year.
+        p.bands You've seen 
+            b #{bandNumber} unique bands 
+            | at 
+            b #{documents.length} shows, 
+            | in 
+            b #{venuesList.length} venues 
+            | in 
+            b #{cityList.length} 
+                a(href='cities') cities 
+            | over the course of 
+            b #{numofyears} years. 
+        p.bands This means an average of 
+            b #{yearAverage.toFixed(1)} shows per year, 
+            | and an average of 
+            b #{bandAverage.toFixed(1)} bands per year.
         br

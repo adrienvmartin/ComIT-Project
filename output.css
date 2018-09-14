@@ -227,15 +227,15 @@ table#headliner {
 #headliner tr:nth-child(even) {
   background-color: #f2f2f2; }
 
-#headliner tr:hover {
-  background-color: #a4c2a5; }
+#headliner thead tr:hover {
+  background-color: #50769b; }
+
+#headliner tbody tr:hover {
+  background-color: rgba(35, 133, 224, 0.2); }
 
 h2.title {
   text-align: center;
   font-family: Helvetica; }
-
-.red {
-  background-color: red; }
 
 table#festivals {
   border-collapse: collapse;
@@ -249,6 +249,12 @@ table#festivals {
   padding: 8px;
   font-size: 10pt;
   font-weight: normal; }
+
+#festivals thead:hover {
+  background-color: rgba(0, 7, 3, 0.623); }
+
+#festivals tr:hover {
+  background-color: rgba(38, 204, 32, 0.137); }
 
 table#local {
   border-collapse: collapse;
@@ -267,7 +273,7 @@ table#local {
   background-color: #f2f2f2; }
 
 #local tr:hover {
-  background-color: #eef4ed; }
+  background-color: rgba(170, 168, 29, 0.2); }
 
 h2.title {
   text-align: center;
@@ -281,3 +287,15 @@ h2.title {
 
 .dataTables_wrapper .dataTables_filter input {
   margin: auto; }
+
+#headliner td.sorting_1 {
+  background-color: rgba(29, 102, 170, 0.2); }
+
+#festivals td.sorting_1 {
+  background-color: rgba(34, 170, 29, 0.2); }
+
+#local td.sorting_1 {
+  background-color: rgba(170, 168, 29, 0.2); }
+
+#stats td.sorting_1 {
+  background-color: #b2cdae; }
