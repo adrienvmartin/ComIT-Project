@@ -18,9 +18,11 @@ app.use(express.urlencoded());
 
 app.set('view engine', 'pug');
 
-app.get('style.css',function(req,res){
+app.get('output.css',function(req,res){
     res.sendFile(path.join(__dirname + 'output.css')); 
   });
+
+app.use('/images', express.static('images')); 
 
 app.get('/newshow', (req, res) => {
     res.render('newshow', { title: 'Concert Database', message: 'Add Headlining Tour' });

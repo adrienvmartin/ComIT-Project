@@ -31,9 +31,9 @@ block content
         include ../styling/jquery.dataTables.css
     script.
         $(document).ready(function(){ $('#stats').DataTable( {
-            paging: false, order: [[1, 'desc']], info: false
+            paging: false, order: [[1, 'desc']], info: false, orderClasses: true
             }); });
-    table#stats
+    table#stats(style="width:40%")
         thead
             tr
                 th Band

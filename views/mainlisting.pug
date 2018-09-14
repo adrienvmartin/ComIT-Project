@@ -15,7 +15,8 @@ block content
             else if (val.showtype == "local")
                 -localGigs.push(val);
 
-        h2.title Headliner Tours
+        p
+            b Headliner Tours
             br
             script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
             script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
@@ -25,7 +26,7 @@ block content
             script.
                 $(document).ready(function(){ $('#headliner').DataTable({
                     paging: false, info: false, }); });
-            table#headliner
+            table#headliner(style="width:65%")
                 thead
                     tr
                         th Show #
@@ -63,15 +64,18 @@ block content
                                 td #{city}
 
         br
-        h2.title Music Festivals
+        br
+        br
+        p
+            b Music Festivals
             br
             script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
             script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
             style
                 include ../styling/jquery.dataTables.css
             script.
-                $(document).ready(function(){ $('#festivals').DataTable({ paging: false, info: false }); });
-            table#festivals
+                $(document).ready(function(){ $('#festivals').DataTable({ paging: false, info: false, }); });
+            table#festivals(style="width:75%")
                 thead
                     tr
                         th Show #
@@ -103,15 +107,18 @@ block content
                                 td #{city}      
 
         br
-        h2.title Local Gigs
+        br
+        br
+        p
+            b Local Gigs
             br
             script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
             script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
             style
                 include ../styling/jquery.dataTables.css
             script.
-                $(document).ready(function(){ $('#local').DataTable({ paging: false, info: false }); });
-            table#local
+                $(document).ready(function(){ $('#local').DataTable({ paging: false, info: false, }); });
+            table#local(style="width:65%")
                 thead
                     tr
                         th Show #

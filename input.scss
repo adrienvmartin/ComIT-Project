@@ -21,6 +21,15 @@ $gentleblue: #7ea3cc;
 $lightsilver: rgba(235, 235, 235, 1);
 
 
+@mixin table($color) {
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $color;
+    font-size: $table-font-size;
+}
+
+
 
 body {
     color: $main-font-color;
@@ -210,8 +219,10 @@ nav {
             padding-left: 5px;
             padding-right: 5px;
         }
+        }
+
     }
-}
+
 
 nav a {
     color: white;
@@ -229,24 +240,9 @@ nav a:last-child {
     margin: 0;
 }
 
-nav > div {
+nav div {
     display: inline-block;
 }
-
-nav > div.links {
-    width: 90%;
-    text-align: right;
-}
-
-nav > div.home {
-    width: 10%;
-    text-shadow: 0px 1px 5px #444;
-}
-
-nav > div.home > a {
-    font-size: 24px;
-}
-
 
 
 
@@ -254,15 +250,17 @@ nav > div.home > a {
 // STATS
 
 table#stats {
-    border-collapse: collapse;
-    margin: auto;
-    width: 50%;
-    font-size: $table-font-size;
+    @include table($color5);
+
 }
 
 #stats td, #stats tr {
     border: 1px solid #ddd;
     padding: 8px;
+}
+
+#stats th {
+    color: $color3;
 }
 
 
@@ -279,7 +277,7 @@ table#stats {
 }
 
 #stats tr:hover {
-    background-color: darkgrey;
+    background-color: rgba(230, 230, 230, 0.747);
 }
 
 
@@ -289,9 +287,8 @@ table#stats {
 // BANDS
 
 table#bands {
-    border-collapse: collapse;
-    margin: auto;
-    font-size: $table-font-size;
+    @include table($color2);
+
 }
 
 #bands td, #bands tr {
@@ -315,16 +312,10 @@ $table-color1: rgba(193, 237, 204, 1);
 $table-color2: rgba(255, 208, 0, 0.651);
 
 
-@mixin table($width, $color) {
-    border-collapse: collapse;
-    margin-right: auto;
-    margin-left: auto;
-    width: $width;
-    background-color: $color;
-}
+
 
 table#headliner {
-    @include table(45em, $color4);
+    @include table($color4);
 }
 
 
@@ -356,8 +347,10 @@ h2.title {
 
 // MAIN LISTING - MUSIC FESTIVALS
 
+$festival-color-main: rgba(0, 109, 45, 0.623);
+
 table#festivals {
-    @include table(55em, $table-color1);
+    @include table($festival-color-main);
 }
 
 #festivals td, #festivals tr {
@@ -367,20 +360,12 @@ table#festivals {
     font-weight: normal;
 }
 
-/*#festivals tr:nth-child(even) {
-    background-color: rgba(0,50,0,0.3);
-}
-
-#festivals tr:nth-child(odd) {
-    background-color: rgba(0,150,0,0.3);
-}*/
-
 
 
 // MAIN LISTING - LOCAL GIGS
 
 table#local {
-    @include table(45em, $table-color2);
+    @include table($table-color2);
 }
 
 #local td, #local tr {
@@ -410,7 +395,9 @@ h2.title {
 .dataTables_wrapper .dataTables_filter {
     float: center;
     text-align: center;
+    margin-right: 1em;
+    margin-left: 1em;
   }
   .dataTables_wrapper .dataTables_filter input {
-    margin-left: auto;
+    margin: auto;
   }

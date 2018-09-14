@@ -165,29 +165,22 @@ nav a:hover {
 nav a:last-child {
   margin: 0; }
 
-nav > div {
+nav div {
   display: inline-block; }
-
-nav > div.links {
-  width: 90%;
-  text-align: right; }
-
-nav > div.home {
-  width: 10%;
-  text-shadow: 0px 1px 5px #444; }
-
-nav > div.home > a {
-  font-size: 24px; }
 
 table#stats {
   border-collapse: collapse;
-  margin: auto;
-  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #eef4ed;
   font-size: 10pt; }
 
 #stats td, #stats tr {
   border: 1px solid #ddd;
   padding: 8px; }
+
+#stats th {
+  color: #0b2545; }
 
 #stats th:hover {
   color: #a4c2a5; }
@@ -199,11 +192,13 @@ table#stats {
   background-color: #f2f2f2; }
 
 #stats tr:hover {
-  background-color: darkgrey; }
+  background-color: rgba(230, 230, 230, 0.747); }
 
 table#bands {
   border-collapse: collapse;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #13315c;
   font-size: 10pt; }
 
 #bands td, #bands tr {
@@ -220,8 +215,8 @@ table#headliner {
   border-collapse: collapse;
   margin-right: auto;
   margin-left: auto;
-  width: 45em;
-  background-color: #8da9c4; }
+  background-color: #8da9c4;
+  font-size: 10pt; }
 
 #headliner td, #headliner tr {
   border: 1px solid #ddd;
@@ -246,8 +241,8 @@ table#festivals {
   border-collapse: collapse;
   margin-right: auto;
   margin-left: auto;
-  width: 55em;
-  background-color: #c1edcc; }
+  background-color: rgba(0, 109, 45, 0.623);
+  font-size: 10pt; }
 
 #festivals td, #festivals tr {
   border: 1px solid #ddd;
@@ -255,19 +250,12 @@ table#festivals {
   font-size: 10pt;
   font-weight: normal; }
 
-/*#festivals tr:nth-child(even) {
-    background-color: rgba(0,50,0,0.3);
-}
-
-#festivals tr:nth-child(odd) {
-    background-color: rgba(0,150,0,0.3);
-}*/
 table#local {
   border-collapse: collapse;
   margin-right: auto;
   margin-left: auto;
-  width: 45em;
-  background-color: rgba(255, 208, 0, 0.651); }
+  background-color: rgba(255, 208, 0, 0.651);
+  font-size: 10pt; }
 
 #local td, #local tr {
   border: 1px solid #ddd;
@@ -287,7 +275,9 @@ h2.title {
 
 .dataTables_wrapper .dataTables_filter {
   float: center;
-  text-align: center; }
+  text-align: center;
+  margin-right: 1em;
+  margin-left: 1em; }
 
 .dataTables_wrapper .dataTables_filter input {
-  margin-left: auto; }
+  margin: auto; }
