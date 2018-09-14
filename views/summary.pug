@@ -61,20 +61,26 @@ block content
     -let bandNumber = bandList.length - emptyBands.length;
     -let yearAverage = (documents.length / numofyears);
     -let bandAverage = (bandNumber / numofyears);
+    -let totalBandAverage = (bands.length / numofyears);
     div.summary
         p.bands You've seen 
-            b #{bandNumber} unique bands 
-            | at 
-            b #{documents.length} shows, 
-            | in 
-            b #{venuesList.length} venues 
-            | in 
+            b #{bandNumber} 
+            | unique bands (
+            b #{bands.length} 
+            | total bands) at 
+            b #{documents.length} 
+            | shows, in 
+            b #{venuesList.length} 
+            | venues in 
             b #{cityList.length} 
-                a(href='cities') cities 
-            | over the course of 
-            b #{numofyears} years. 
+            | cities over the course of 
+            b #{numofyears} 
+            | years. 
         p.bands This means an average of 
-            b #{yearAverage.toFixed(1)} shows per year, 
-            | and an average of 
-            b #{bandAverage.toFixed(1)} bands per year.
+            b #{yearAverage.toFixed(1)} 
+            | shows per year, and an average of 
+            b #{bandAverage.toFixed(1)} 
+            | unique bands per year, and 
+            b #{totalBandAverage.toFixed(1)} 
+            | total bands per year.
         br
