@@ -3,42 +3,29 @@ block head
 
   title= title
   style
-    include style.css
+    include ../output.css
   script
     include ../javascript/projectfunctions.js
 
 
 block menu
     br
-    nav#primary_nav_wrap
-        ul.menu
-            li.current-menu-item
-                a(href='/') Home
-            li.current-menu-item
-                a(href="#") View
-                ul
-                    li.menulist
-                        a(href='/summary') Your Personal Summary
-                    li.menulist
-                        a(href='mainlisting') Full Listings
-            li.current-menu-item
-                a(href="#") Stats
-                ul
-                    li.menulist
-                        a(href='bands') Bands
-                    li.menulist
-                        a(href='venues') Venues
-                    li.menulist
-                        a(href='cities') Cities
-            li.current-menu-item
-                a(href="#") Add
-                ul
-                    li.menulist
-                        a(href='newshow') Headliner Tour
-                    li.menulist
-                        a(href='newfestival') Music Festival
-                    li.menulist
-                        a(href='newlocal') Local Gig 
+    nav
+        div.menu
+            a(href='/') Home
+        div.view
+            a(href='/summary') Personal Summary
+            a(href='mainlisting') Full Listings
+        div.stats 
+            a(href='bands') Bands
+            a(href='venues') Venues
+            a(href='cities') Cities
+        div.add
+            a(href='newshow') Add Headliner Tour
+            a(href='newfestival') Add Music Festival
+            a(href='newlocal') Add Local Gig 
+    br
+    br
     br
 block content
 

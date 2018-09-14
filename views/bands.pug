@@ -2,6 +2,7 @@ extends layout.pug
 
 block content
     h1 Band List
+    br
     -let bands = [];
     each val in documents
         -let headliners = val.headliner;
@@ -22,7 +23,8 @@ block content
     -bandList.pop();
     -bandList.sort(function(a, b) { return b[1] - a[1]; });
 
-    p.bands You've seen #{bandList.length} bands.
+    p.bands You've seen 
+        b #{bandList.length} bands.
 
     script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
     script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
@@ -30,9 +32,9 @@ block content
         include ../styling/jquery.dataTables.css
     script.
         $(document).ready(function(){ $('#stats').DataTable( {
-            paging: false, order: [[1, 'desc']], info: false
+            paging: false, order: [[1, 'desc']], info: false, orderClasses: true
             }); });
-    table#stats
+    table#stats(style="width:40%")
         thead
             tr
                 th Band

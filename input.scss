@@ -1,17 +1,47 @@
 $main-font-color: black;
 $main-font-family: Arial, Helvetica, sans-serif;
 $main-bg-color: darkgrey;
-$table-blue: blue;
-$festival-color: darkseagreen;
+
+$color1: rgba(19, 64, 116, 1);
+$color2: rgba(19, 49, 92, 1);
+$color3: rgba(11, 37, 69, 1);
+$color4: rgba(141, 169, 196, 1);
+$color5: rgba(238, 244, 237, 1);
+
+$color6: #f1f2eb;
+$color7: #d8dad3;
+$color8: #a4c2a5;
+$color9: #566246;
+$color10: #4a4a48;
+
+
+$table-font-size: 10pt;
+
+$gentleblue: #7ea3cc;
+$lightsilver: rgba(235, 235, 235, 1);
+
+
+@mixin table($color) {
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $color;
+    font-size: $table-font-size;
+}
+
+
 
 body {
-    color: black;
+    color: $main-font-color;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+    background-color: $lightsilver;
+    text-align: center;
 }
 
 h1 {
     text-align: center;
+    margin: none;
+    margin-bottom: 40px;
 }
 
 a.showlist {
@@ -20,8 +50,8 @@ a.showlist {
 }
 
 form {
-background-color: #eee;
-border: 1px solid #ddd;
+background-color: $color5;
+border: 1px solid $color4;
 font-family: Arial, Helvetica, sans-serif;
 font-size: 16px;
 width: 500px;
@@ -29,13 +59,9 @@ margin-left: auto;
 margin-right: auto;
 padding: 20px 40px;
 /* color: #1abc9c; */
-color: darkslategrey;
+color: $color2;
 }  
 
-h1 {
-    margin: none;
-    margin-bottom: 40px;
-}
 
 fieldset {
     border: none;
@@ -65,7 +91,7 @@ input[type="submit"] {
     display: block;
     padding: 19px 39px 18px 39px;
     color: white;
-    background-color: darkslategrey;
+    background-color: $color4;
     font-size: 18px;
     text-align: center;
     width: 100%;
@@ -172,97 +198,51 @@ label {
 
 // MAIN MENU
 
-#primary_nav_wrap
-{
-    margin-right: auto;
-    margin-left: auto;
-    width: 15em;
-    padding-bottom: 30px;
-    
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $color4;
+    padding: 10px 20px;
+    margin: 0;
+    box-shadow: 0 2px 1px #777;
+    z-index: 1;
+
+    div {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        
+        a {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        }
+
+    }
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    margin-right: 10px;
 }
 
-#primary_nav_wrap ul
-{
-    list-style:none;
-    position:relative;
-    float:left;
-    margin:0;
-    padding:0;
+nav a:hover {
+    text-shadow: 0px 1px 5px #444;
 }
 
-#primary_nav_wrap ul a
-{
-    display:block;
-    color:#333;
-    text-decoration:none;
-    font-weight:700;
-    font-size:12px;
-    line-height:32px;
-    padding:0 15px;
-    font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+nav a:last-child {
+    margin: 0;
 }
 
-#primary_nav_wrap ul li
-{
-    position:relative;
-    float:left;
-    margin:0;
-    padding:0;
+nav div {
+    display: inline-block;
 }
-
-#primary_nav_wrap ul li.current-menu-item
-{
-    background:#ddd;
-}
-
-#primary_nav_wrap ul li:hover
-{
-    background:#f6f6f6;
-}
-
-#primary_nav_wrap ul ul
-{
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    background:#fff;
-    padding:0;
-}
-
-#primary_nav_wrap ul ul li
-{
-    float:none;
-    width:200px;
-}
-
-#primary_nav_wrap ul ul a
-{
-    line-height:120%;
-    padding:10px 15px;
-}
-
-#primary_nav_wrap ul ul ul
-{
-    top:0;
-    left:100%;
-}
-
-#primary_nav_wrap ul li:hover > ul
-{
-    display:block;
-}
-
-.menu {
-    float: center;
-}
-
-table {
-    float: center;
-    text-align: center;
-    border-style: solid;
-}
-
 
 
 
@@ -270,9 +250,8 @@ table {
 // STATS
 
 table#stats {
-    border-collapse: collapse;
-    margin: auto;
-    width: 50%;
+    @include table($color5);
+
 }
 
 #stats td, #stats tr {
@@ -280,9 +259,13 @@ table#stats {
     padding: 8px;
 }
 
+#stats th {
+    color: $color3;
+}
+
 
 #stats th:hover {
-    color: white;
+    color: $color8;
 }
 
 .cursor {
@@ -294,7 +277,7 @@ table#stats {
 }
 
 #stats tr:hover {
-    background-color: darkgrey;
+    background-color: rgba(230, 230, 230, 0.747);
 }
 
 
@@ -304,8 +287,8 @@ table#stats {
 // BANDS
 
 table#bands {
-    border-collapse: collapse;
-    margin: auto;
+    @include table($color2);
+
 }
 
 #bands td, #bands tr {
@@ -325,17 +308,21 @@ table#bands {
 
 // MAIN LISTING - HEADLINER TOURS
 
+$table-color1: rgba(193, 237, 204, 1);
+$table-color2: rgba(255, 208, 0, 0.651);
+
+
+
+
 table#headliner {
-    border-collapse: collapse;
-    margin-right: auto;
-    margin-left: auto;
-    width: 45em;
+    @include table($color4);
 }
+
 
 #headliner td, #headliner tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 10pt;
+    font-size: $table-font-size;
     font-weight: normal;
 }
 
@@ -343,8 +330,12 @@ table#headliner {
     background-color: #f2f2f2;
 }
 
-#headliner tr:hover {
-    background-color: darkgrey;
+#headliner thead tr:hover {
+    background-color: darken($color4, 20%);
+}
+
+#headliner tbody tr:hover {
+    background-color: rgba(35, 133, 224, 0.2);
 }
 
 h2.title {
@@ -354,26 +345,28 @@ h2.title {
 
 
 
+
 // MAIN LISTING - MUSIC FESTIVALS
 
+$festival-color-main: rgba(0, 109, 45, 0.623);
+
 table#festivals {
-    border-collapse: collapse;
-    margin: auto;
+    @include table($festival-color-main);
 }
 
 #festivals td, #festivals tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 12pt;
+    font-size: $table-font-size;
     font-weight: normal;
 }
 
-#festivals tr:nth-child(even) {
-    background-color: rgba(0,50,0,0.3);
+#festivals thead:hover {
+    background-color: darken($festival-color-main, 20%);
 }
 
-#festivals tr:nth-child(odd) {
-    background-color: rgba(0,150,0,0.3);
+#festivals tr:hover {
+    background-color: rgba(38, 204, 32, 0.137);
 }
 
 
@@ -381,14 +374,13 @@ table#festivals {
 // MAIN LISTING - LOCAL GIGS
 
 table#local {
-    border-collapse: collapse;
-    margin: auto;
+    @include table($table-color2);
 }
 
 #local td, #local tr {
     border: 1px solid #ddd;
     padding: 8px;
-    font-size: 12pt;
+    font-size: $table-font-size;
     font-weight: normal;
 }
 
@@ -397,7 +389,7 @@ table#local {
 }
 
 #local tr:hover {
-    background-color: darkgrey;
+    background-color: rgba(170, 168, 29, 0.2);
 }
 
 h2.title {
@@ -412,7 +404,25 @@ h2.title {
 .dataTables_wrapper .dataTables_filter {
     float: center;
     text-align: center;
+    margin-right: 1em;
+    margin-left: 1em;
   }
   .dataTables_wrapper .dataTables_filter input {
-    margin-left: auto;
+    margin: auto;
   }
+
+#headliner td.sorting_1 {
+    background-color: rgba(29, 102, 170, 0.2);
+}
+
+#festivals td.sorting_1 {
+    background-color: rgba(34, 170, 29, 0.2);
+}
+
+#local td.sorting_1 {
+    background-color: rgba(170, 168, 29, 0.2);
+}
+
+#stats td.sorting_1 {
+    background-color: darken($color5, 20%);
+}

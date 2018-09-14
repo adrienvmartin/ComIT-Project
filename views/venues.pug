@@ -8,7 +8,7 @@ block content
         each val in documents
             -let venue = val.venue;
             -let city = val.city;
-            -venues.push(`${venue}` + ' ' + `(${city})`);
+            -venues.push(venue);
         -let venueObject = {};
         -let counts = {};
         -venues.sort();
@@ -17,7 +17,8 @@ block content
         -for (i=0; i < Object.entries(counts).length; i++) {
             -venuesList.push(Object.entries(counts)[i]); }
 
-    p.bands You've been to #{venuesList.length} venues.
+    p.bands You've been to 
+        b #{venuesList.length} venues.
 
     script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
     script(type='text/javascript', src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js')
@@ -27,7 +28,7 @@ block content
         $(document).ready(function(){ $('#stats').DataTable( {
             paging: false, order: [[1, 'desc']], info: false
             }); });
-    table#stats
+    table#stats(style="width:40%")
         thead
             tr
                 th.venue Venue

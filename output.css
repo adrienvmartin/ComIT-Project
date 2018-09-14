@@ -1,0 +1,301 @@
+body {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ebebeb;
+  text-align: center; }
+
+h1 {
+  text-align: center;
+  margin: none;
+  margin-bottom: 40px; }
+
+a.showlist {
+  color: black;
+  text-decoration: none; }
+
+form {
+  background-color: #eef4ed;
+  border: 1px solid #8da9c4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 40px;
+  /* color: #1abc9c; */
+  color: #13315c; }
+
+fieldset {
+  border: none;
+  padding: none;
+  margin: 10px 0px; }
+
+label {
+  display: inline-block;
+  width: 80px;
+  padding-right: 20px; }
+
+input[type="text"], textarea {
+  display: inline-block;
+  width: 417px;
+  padding: 0.5em;
+  font-size: 16px;
+  color: gray; }
+
+textarea {
+  vertical-align: middle; }
+
+input[type="submit"] {
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: white;
+  background-color: #8da9c4;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  border: 1px solid #16a085; }
+
+fieldset:last-child {
+  margin-top: 40px; }
+
+input[type="text"]:focus, input[type="password"]:focus, button:focus {
+  border: 1px solid #ec576b;
+  box-shadow: 0 6px 6px -6px #777; }
+
+.newBandForm:first-child {
+  display: inline-block;
+  width: 417px;
+  padding: 0.5em;
+  margin-top: 20px;
+  font-size: 16px;
+  color: gray;
+  outline-color: darkslategrey;
+  align-content: center; }
+
+.newBandForm:last-child {
+  margin-bottom: 20px; }
+
+#submitbutton {
+  display: block;
+  padding: 9px 19px 8px 19px;
+  color: white;
+  background-color: darkslategrey;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  border: 1px solid #16a085;
+  margin-bottom: 10px; }
+
+#resetbutton {
+  display: block;
+  padding: 9px 19px 8px 19px;
+  color: white;
+  background-color: darkslategrey;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  border: 1px solid #16a085;
+  margin-top: 10px; }
+
+#fill {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8; }
+
+label {
+  width: 200px; }
+
+/* #openers {
+    width: 400px;
+    height: 200px;
+} */
+.bandlisting {
+  color: black;
+  text-align: left; }
+
+/* .festival {
+    color: darkgreen;
+} */
+.bands {
+  text-align: center; }
+
+.banddiv {
+  border: solid;
+  border-color: silver;
+  margin-left: 200px;
+  margin-right: 200px;
+  color: black;
+  padding: 10px; }
+
+.summary {
+  border: solid;
+  border-color: silver;
+  margin-left: 200px;
+  margin-right: 200px;
+  padding: 25px; }
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #8da9c4;
+  padding: 10px 20px;
+  margin: 0;
+  box-shadow: 0 2px 1px #777;
+  z-index: 1; }
+  nav div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px; }
+    nav div a {
+      padding-left: 5px;
+      padding-right: 5px; }
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: inline-block;
+  margin-right: 10px; }
+
+nav a:hover {
+  text-shadow: 0px 1px 5px #444; }
+
+nav a:last-child {
+  margin: 0; }
+
+nav div {
+  display: inline-block; }
+
+table#stats {
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #eef4ed;
+  font-size: 10pt; }
+
+#stats td, #stats tr {
+  border: 1px solid #ddd;
+  padding: 8px; }
+
+#stats th {
+  color: #0b2545; }
+
+#stats th:hover {
+  color: #a4c2a5; }
+
+.cursor {
+  cursor: grab; }
+
+#stats tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+#stats tr:hover {
+  background-color: rgba(230, 230, 230, 0.747); }
+
+table#bands {
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #13315c;
+  font-size: 10pt; }
+
+#bands td, #bands tr {
+  border: 1px solid #ddd;
+  padding: 8px; }
+
+#bands tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+#bands tr:hover {
+  background-color: darkgrey; }
+
+table#headliner {
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #8da9c4;
+  font-size: 10pt; }
+
+#headliner td, #headliner tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 10pt;
+  font-weight: normal; }
+
+#headliner tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+#headliner thead tr:hover {
+  background-color: #50769b; }
+
+#headliner tbody tr:hover {
+  background-color: rgba(35, 133, 224, 0.2); }
+
+h2.title {
+  text-align: center;
+  font-family: Helvetica; }
+
+table#festivals {
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgba(0, 109, 45, 0.623);
+  font-size: 10pt; }
+
+#festivals td, #festivals tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 10pt;
+  font-weight: normal; }
+
+#festivals thead:hover {
+  background-color: rgba(0, 7, 3, 0.623); }
+
+#festivals tr:hover {
+  background-color: rgba(38, 204, 32, 0.137); }
+
+table#local {
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgba(255, 208, 0, 0.651);
+  font-size: 10pt; }
+
+#local td, #local tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 10pt;
+  font-weight: normal; }
+
+#local tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+#local tr:hover {
+  background-color: rgba(170, 168, 29, 0.2); }
+
+h2.title {
+  text-align: center;
+  font-family: Helvetica; }
+
+.dataTables_wrapper .dataTables_filter {
+  float: center;
+  text-align: center;
+  margin-right: 1em;
+  margin-left: 1em; }
+
+.dataTables_wrapper .dataTables_filter input {
+  margin: auto; }
+
+#headliner td.sorting_1 {
+  background-color: rgba(29, 102, 170, 0.2); }
+
+#festivals td.sorting_1 {
+  background-color: rgba(34, 170, 29, 0.2); }
+
+#local td.sorting_1 {
+  background-color: rgba(170, 168, 29, 0.2); }
+
+#stats td.sorting_1 {
+  background-color: #b2cdae; }
