@@ -39,7 +39,7 @@ app.get('/newlocal', (req, res) => {
 app.get('/', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         useNewUrlParser: true;
 
@@ -55,7 +55,7 @@ app.post('/showsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         const newshow = { "headliner": req.body.headliner, "openers": req.body.openers, "city": req.body.city, "venue": req.body.venue, "date": req.body.date, "writtendate": functions.writtenDate(req.body.date), "showtype": req.body.showtype };
 
@@ -76,7 +76,7 @@ app.post('/festivalsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         const newshow = { "headliner": req.body.headliner, "openers": req.body.openers, "city": req.body.city, "venue": req.body.venue, "date": req.body.date, "writtendate": functions.writtenDate(req.body.date), "showtype": req.body.showtype, "festival": req.body.festival };
 
@@ -97,7 +97,7 @@ app.post('/localsubmit', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         const newshow = { "openers": req.body.openers, "city": req.body.city, "venue": req.body.venue, "date": req.body.date, "writtendate": functions.writtenDate(req.body.date), "showtype": req.body.showtype };
 
@@ -119,7 +119,7 @@ app.get('/mainlisting', (req, res) => {
     MongoClient.connect(url, function (err, client) {
 
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         collection.find({}, {sort: {date: 1}}).toArray((error, documents) => {
             client.close();
@@ -132,7 +132,7 @@ app.get('/mainlisting', (req, res) => {
 app.get('/bands', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         collection.find({}).toArray((error, documents) => {
             client.close();
@@ -144,7 +144,7 @@ app.get('/bands', (req, res) => {
 app.get('/venues', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         collection.find({}).toArray((error, documents) => {
             client.close();
@@ -156,7 +156,7 @@ app.get('/venues', (req, res) => {
 app.get('/cities', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         collection.find({}).toArray((error, documents) => {
             client.close();
@@ -169,7 +169,7 @@ app.get('/cities', (req, res) => {
 app.get('/summary', (req, res) => {
     MongoClient.connect(url, function (err, client) {
         const db = client.db('showtest');
-        const collection = db.collection('show1');
+        const collection = db.collection('example');
 
         collection.find({}).toArray((error, documents) => {
             client.close();
