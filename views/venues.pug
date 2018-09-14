@@ -8,7 +8,7 @@ block content
         each val in documents
             -let venue = val.venue;
             -let city = val.city;
-            -venues.push(`${venue}` + ' ' + `(${city})`);
+            -venues.push(venue);
         -let venueObject = {};
         -let counts = {};
         -venues.sort();

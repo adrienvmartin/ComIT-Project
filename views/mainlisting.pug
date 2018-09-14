@@ -22,7 +22,8 @@ block content
             style
                 include ../styling/jquery.dataTables.css
             script.
-                $(document).ready(function(){ $('#headliner').DataTable({paging: false, info: false}); });
+                $(document).ready(function(){ $('#headliner').DataTable({
+                    paging: false, info: false, }); });
             table#headliner
                 thead
                     tr
@@ -43,7 +44,7 @@ block content
                         -let festivalName = show.festival;
                         -let year = show.date.slice(0, 4);
                         if (openers.length > 0)
-                            tr(class=`${year}`)
+                            tr
                                 td #{showNumber}
                                 td 
                                     b #{headliner} 
@@ -52,7 +53,7 @@ block content
                                 td #{venue}
                                 td #{city}
                         else if (openers.length == 0)
-                            tr(class=`${year}`)
+                            tr
                                 td #{showNumber}
                                 td 
                                     b #{headliner}
