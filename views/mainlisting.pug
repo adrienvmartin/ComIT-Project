@@ -43,7 +43,7 @@ block content
                         -let festivalName = show.festival;
                         -let year = show.date.slice(0, 4);
                         if (openers.length > 0)
-                            tr
+                            tr(class=`${year}`)
                                 td #{showNumber}
                                 td 
                                     b #{headliner} 
@@ -52,7 +52,7 @@ block content
                                 td #{venue}
                                 td #{city}
                         else if (openers.length == 0)
-                            tr
+                            tr(class=`${year}`)
                                 td #{showNumber}
                                 td 
                                     b #{headliner}

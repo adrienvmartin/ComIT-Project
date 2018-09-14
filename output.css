@@ -1,13 +1,8 @@
-/* Version 1
-$color1: #f1f2eb;
-$color2: #d8dad3;
-$color3: #a4c2a5;
-$color4: #566246;
-$color5: #4a4a48; */
 body {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #eef4ed; }
+  background-color: #eef4ed;
+  text-align: center; }
 
 h1 {
   text-align: center; }
@@ -209,14 +204,15 @@ table {
 table#stats {
   border-collapse: collapse;
   margin: auto;
-  width: 50%; }
+  width: 50%;
+  font-size: 10pt; }
 
 #stats td, #stats tr {
   border: 1px solid #ddd;
   padding: 8px; }
 
 #stats th:hover {
-  color: white; }
+  color: #a4c2a5; }
 
 .cursor {
   cursor: grab; }
@@ -229,7 +225,8 @@ table#stats {
 
 table#bands {
   border-collapse: collapse;
-  margin: auto; }
+  margin: auto;
+  font-size: 10pt; }
 
 #bands td, #bands tr {
   border: 1px solid #ddd;
@@ -258,7 +255,7 @@ table#headliner {
   background-color: #f2f2f2; }
 
 #headliner tr:hover {
-  background-color: darkgrey; }
+  background-color: #a4c2a5; }
 
 h2.title {
   text-align: center;
@@ -301,7 +298,7 @@ table#local {
   background-color: #f2f2f2; }
 
 #local tr:hover {
-  background-color: darkgrey; }
+  background-color: #eef4ed; }
 
 h2.title {
   text-align: center;
